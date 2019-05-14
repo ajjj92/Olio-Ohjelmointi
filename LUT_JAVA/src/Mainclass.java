@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,14 +18,20 @@ public class Mainclass {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hello World!");
+        Scanner scan = new Scanner(System.in);
         
-        Dog doge = new Dog("Rocky");
-        Dog doge2 = new Dog("Pertti");
-        System.out.println("Nimeni on " + doge.getName());
+        System.out.println("Anna koiralle nimi: ");
+
+        String nimi = scan.nextLine(); 
+        
+        Dog doge1 = new Dog();
+        Dog doge2 = new Dog(nimi);
+        System.out.println("Nimeni on " + doge1.getName());
         System.out.println("Nimeni on " + doge2.getName());
-        doge.Speak();
-        doge2.Speak("HELLO OLEN MYÖS KOIRA RUF RUF");
+        System.out.println("Mitä koira sanoo: ");
+        String lause = scan.nextLine();
+        doge1.Speak();
+        doge2.Speak(lause);
     }
     
 }
