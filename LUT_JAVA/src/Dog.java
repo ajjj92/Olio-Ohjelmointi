@@ -10,21 +10,37 @@
  */
 public class Dog {
     
-    private String nimi;
+    private String name;
     private String lause;
-    public Dog(String n) { 
-        lause = "Much wow!";
-        nimi = n;
+   
+    
+    public Dog() {
+        name = "Doge";
     }
-    public void Speak() {
-        System.out.println("Hei, nimeni on " + nimi);
-        System.out.println(nimi +":"+ lause);
+    public Dog(String koira) {
+        if(koira.trim().isEmpty()){
+            name = "Doge";
+            //do nothing
+        } else
+            name = koira;
     }
-   public void Speak(String l) {
-        System.out.println("Hei, nimeni on " + nimi);
-        System.out.println(nimi +":"+ l);
+    
+   public void Speak() {
+       lause = "Much wow!";
+       System.out.println(name+": "+lause);
     }
-    public String getName() {
-        return nimi;
+   public void Speak(String puhu) {
+       if(puhu.trim().isEmpty()) {
+           lause = "Much wow!";
+           //do nothing
+       } else {
+            lause = puhu;
     }
+        System.out.println(name+": "+lause);
+
+   }
+   public String getName(){
+       return name;
+   }
+ 
 }
