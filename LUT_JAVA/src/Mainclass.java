@@ -20,18 +20,16 @@ public class Mainclass {
         // TODO code application logic here
         Scanner scan = new Scanner(System.in);
         
-        System.out.println("Anna koiralle nimi: ");
+        System.out.print("Anna koiralle nimi: ");
 
         String nimi = scan.nextLine(); 
         
-        Dog doge1 = new Dog();
-        Dog doge2 = new Dog(nimi);
-        System.out.println("Nimeni on " + doge1.getName());
-        System.out.println("Nimeni on " + doge2.getName());
-        System.out.println("Mitä koira sanoo: ");
+        Dog doge1 = new Dog(nimi);
+        
+        System.out.print("Mitä koira sanoo: ");
         String lause = scan.nextLine();
-        doge1.Speak();
-        doge2.Speak(lause);
+        doge1.Speak(lause);
+
     }
     
 }
