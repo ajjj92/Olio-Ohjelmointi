@@ -19,7 +19,7 @@ public class Dog {
     
     public Dog() {
         name = "Doge";
-        System.out.println("Hei, nimeni on "+name+"!");
+        System.out.println("Hei, nimeni on "+name);
     }
     public Dog(String koira) {
         if(koira.trim().isEmpty()){
@@ -27,9 +27,25 @@ public class Dog {
             //do nothing
         } else {
             name = koira;
-            System.out.println("Hei, nimeni on "+name+"!");
+            System.out.println("Hei, nimeni on "+name);
     }
     }
+    
+    public void isInteger(String element) {
+        try {
+                Integer.parseInt(element);
+                System.out.println(String.format("Such integer: %s", element));
+               }catch(Exception error ){
+                    if(element.equals("true") || element.equals("false")){
+                        System.out.println(String.format("Such boolean: %s", element));
+                }else{
+                    System.out.println(String.format("%s", element));
+                        }
+                   
+    }
+    }
+    
+
     
    public void Speak() {
        lause = "Much wow!";
@@ -45,12 +61,15 @@ public class Dog {
            lause = scan.nextLine();
            Speak(lause);
        } else {
-            lause = puhu;
-            System.out.println(name+": "+lause);
-    }
+            String [] lista = puhu.split(" ");
+            for(int i = 0; i<lista.length; i++){
+               
+                isInteger(lista[i]);
+               }
+               }
         
-
-   }
+               }
+   
    public String getName(){
        return name;
    }
