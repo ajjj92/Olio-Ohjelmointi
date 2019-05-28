@@ -40,4 +40,3 @@ public class BottleDispenser {
         System.out.println("Klink klink. Sinne menivät rahat!");
     }
 }
-
