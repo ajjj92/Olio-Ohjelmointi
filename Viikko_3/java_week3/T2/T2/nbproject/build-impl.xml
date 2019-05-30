@@ -19,7 +19,7 @@ is divided into following sections:
   - cleanup
 
         -->
-<project xmlns:if="ant:if" xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc" xmlns:unless="ant:unless" basedir="../../../.." default="default" name="week3_T1-impl">
+<project xmlns:if="ant:if" xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc" xmlns:unless="ant:unless" basedir=".." default="default" name="T2-impl">
     <fail message="Please build using Ant 1.8.0 or higher.">
         <condition>
             <not>
@@ -40,10 +40,10 @@ is divided into following sections:
     <target depends="-pre-init" name="-init-private">
         <property file="nbproject/private/config.properties"/>
         <property file="nbproject/private/configs/${config}.properties"/>
-        <property file="private/private.properties"/>
+        <property file="nbproject/private/private.properties"/>
     </target>
     <target depends="-pre-init,-init-private" name="-init-user">
-        <property file="../../../../../../../../../AppData/Roaming/NetBeans/11.0/build.properties"/>
+        <property file="${user.properties.file}"/>
         <!-- The two properties below are usually overridden -->
         <!-- by the active platform. Just a fallback. -->
         <property name="default.javac.source" value="1.6"/>
@@ -51,7 +51,7 @@ is divided into following sections:
     </target>
     <target depends="-pre-init,-init-private,-init-user" name="-init-project">
         <property file="nbproject/configs/${config}.properties"/>
-        <property file="project.properties"/>
+        <property file="nbproject/project.properties"/>
     </target>
     <target name="-init-modules-supported">
         <condition property="modules.supported.internal" value="true">
@@ -103,11 +103,11 @@ is divided into following sections:
             </not>
         </condition>
         <property name="javac.modulepath" value=""/>
-        <property name="run.modulepath" value="build-impl.xml"/>
+        <property name="run.modulepath" value="${javac.modulepath}"/>
         <property name="module.build.classes.dir" value="${build.classes.dir}"/>
-        <property name="debug.modulepath" value="build-impl.xml"/>
+        <property name="debug.modulepath" value="${run.modulepath}"/>
         <property name="javac.upgrademodulepath" value=""/>
-        <property name="run.upgrademodulepath" value="build-impl.xml"/>
+        <property name="run.upgrademodulepath" value="${javac.upgrademodulepath}"/>
         <condition else="" property="javac.systemmodulepath.cmd.line.arg" value="--system '${javac.systemmodulepath}'">
             <and>
                 <isset property="javac.systemmodulepath"/>
@@ -120,7 +120,7 @@ is divided into following sections:
     </target>
     <target depends="-pre-init,-init-private,-init-user,-init-project,-init-macrodef-property,-init-modules-supported" name="-do-init">
         <property name="platform.java" value="${java.home}/bin/java"/>
-        <available file="../manifest.mf" property="manifest.available"/>
+        <available file="${manifest.file}" property="manifest.available"/>
         <condition property="splashscreen.available">
             <and>
                 <not>
@@ -197,7 +197,7 @@ is divided into following sections:
         </condition>
         <condition property="have.sources">
             <or>
-                <available file="../src"/>
+                <available file="${src.dir}"/>
             </or>
         </condition>
         <condition property="netbeans.home+have.tests">
@@ -215,7 +215,7 @@ is divided into following sections:
         <property name="run.jvmargs" value=""/>
         <property name="run.jvmargs.ide" value=""/>
         <property name="javac.compilerargs" value=""/>
-        <property name="work.dir" value="/"/>
+        <property name="work.dir" value="${basedir}"/>
         <condition property="no.deps">
             <and>
                 <istrue value="${no.dependencies}"/>
@@ -489,12 +489,12 @@ is divided into following sections:
                     <globmapper from="*.java" to="*.class"/>
                 </pathconvert>
                 <tempfile deleteonexit="true" property="javac.includesfile.binary"/>
-                <echo file="build-impl.xml" message="${javac.includes.binary}"/>
+                <echo file="${javac.includesfile.binary}" message="${javac.includes.binary}"/>
                 <delete>
-                    <files includesfile="build-impl.xml"/>
+                    <files includesfile="${javac.includesfile.binary}"/>
                 </delete>
                 <delete>
-                    <fileset file="build-impl.xml"/>
+                    <fileset file="${javac.includesfile.binary}"/>
                 </delete>
             </sequential>
         </macrodef>
@@ -527,7 +527,7 @@ is divided into following sections:
             <element name="customizePrototype" optional="true"/>
             <sequential>
                 <property name="junit.forkmode" value="perTest"/>
-                <junit dir=".." errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">
+                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">
                     <syspropertyset>
                         <propertyref prefix="test-sys-prop."/>
                         <mapper from="test-sys-prop.*" to="*" type="glob"/>
@@ -536,7 +536,7 @@ is divided into following sections:
                         <path path="${run.test.classpath}"/>
                     </classpath>
                     <modulepath>
-                        <path path="build-impl.xml"/>
+                        <path path="${run.test.modulepath}"/>
                     </modulepath>
                     <formatter type="brief" usefile="false"/>
                     <formatter type="xml"/>
@@ -555,7 +555,7 @@ is divided into following sections:
             <element name="customizePrototype" optional="true"/>
             <sequential>
                 <property name="junit.forkmode" value="perTest"/>
-                <junit dir=".." errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">
+                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">
                     <syspropertyset>
                         <propertyref prefix="test-sys-prop."/>
                         <mapper from="test-sys-prop.*" to="*" type="glob"/>
@@ -631,7 +631,7 @@ is divided into following sections:
                     </fileset>
                 </union>
                 <taskdef classname="org.testng.TestNGAntTask" classpath="${run.test.classpath}" name="testng"/>
-                <testng classfilesetref="test.set" failureProperty="tests.failed" listeners="org.testng.reporters.VerboseReporter" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="week3_T1" testname="TestNG tests" workingDir="${work.dir}">
+                <testng classfilesetref="test.set" failureProperty="tests.failed" listeners="org.testng.reporters.VerboseReporter" methods="${testng.methods.arg}" mode="${testng.mode}" outputdir="${build.test.results.dir}" suitename="T2" testname="TestNG tests" workingDir="${work.dir}">
                     <xmlfileset dir="${build.test.classes.dir}" includes="@{testincludes}"/>
                     <propertyset>
                         <propertyref prefix="test-sys-prop."/>
@@ -728,7 +728,7 @@ is divided into following sections:
                 <condition else="-testclass @{testClass}" property="test.class.or.method" value="-methods @{testClass}.@{testMethod}">
                     <isset property="test.method"/>
                 </condition>
-                <condition else="-suitename week3_T1 -testname @{testClass} ${test.class.or.method}" property="testng.cmd.args" value="@{testClass}">
+                <condition else="-suitename T2 -testname @{testClass} ${test.class.or.method}" property="testng.cmd.args" value="@{testClass}">
                     <matches pattern=".*\.xml" string="@{testClass}"/>
                 </condition>
                 <delete dir="${build.test.results.dir}" quiet="true"/>
@@ -911,7 +911,7 @@ is divided into following sections:
             <attribute default="jvm" name="jvm"/>
             <element name="customize" optional="true"/>
             <sequential>
-                <java classname="@{classname}" dir=".." failonerror="${java.failonerror}" fork="true" module="@{modulename}">
+                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true" module="@{modulename}">
                     <classpath>
                         <path path="@{classpath}"/>
                     </classpath>
@@ -945,7 +945,7 @@ is divided into following sections:
             <attribute default="jvm" name="jvm"/>
             <element name="customize" optional="true"/>
             <sequential>
-                <java classname="@{classname}" dir=".." failonerror="${java.failonerror}" fork="true">
+                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true">
                     <classpath>
                         <path path="@{classpath}"/>
                     </classpath>
@@ -977,7 +977,7 @@ is divided into following sections:
             <attribute default="jvm" name="jvm"/>
             <element name="customize" optional="true"/>
             <sequential>
-                <java classname="@{classname}" dir=".." failonerror="${java.failonerror}" fork="true">
+                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true">
                     <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>
                     <jvmarg value="-Dfile.encoding=${runtime.encoding}"/>
                     <redirector errorencoding="${runtime.encoding}" inputencoding="${runtime.encoding}" outputencoding="${runtime.encoding}"/>
@@ -1007,7 +1007,7 @@ is divided into following sections:
                     <map from="${build.classes.dir.resolved}" to=""/>
                 </pathconvert>
                 <pathconvert pathsep=" " property="jar.classpath">
-                    <path path="build-impl.xml"/>
+                    <path path="${run.classpath.without.build.classes.dir}"/>
                     <chainedmapper>
                         <flattenmapper/>
                         <filtermapper>
@@ -1016,7 +1016,7 @@ is divided into following sections:
                         <globmapper from="*" to="lib/*"/>
                     </chainedmapper>
                 </pathconvert>
-                <taskdef classname="org.netbeans.modules.java.j2seproject.copylibstask.CopyLibs" classpath="../../../../../../../../../../../Program Files/Netbeans/netbeans/java/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar" name="copylibs"/>
+                <taskdef classname="org.netbeans.modules.java.j2seproject.copylibstask.CopyLibs" classpath="${libs.CopyLibs.classpath}" name="copylibs"/>
                 <copylibs compress="${jar.compress}" excludeFromCopy="${copylibs.excludes}" index="${jar.index}" indexMetaInf="${jar.index.metainf}" jarfile="${dist.jar}" manifest="@{manifest}" manifestencoding="UTF-8" rebase="${copylibs.rebase}" runtimeclasspath="${run.classpath.without.build.classes.dir}">
                     <fileset dir="${build.classes.dir}" excludes="${dist.archive.excludes}"/>
                     <manifest>
@@ -1039,7 +1039,7 @@ is divided into following sections:
         <property name="annotation.processing.processors.list" value=""/>
         <property name="annotation.processing.processor.options" value=""/>
         <property name="annotation.processing.run.all.processors" value="true"/>
-        <property name="javac.processorpath" value="build-impl.xml"/>
+        <property name="javac.processorpath" value="${javac.classpath}"/>
         <property name="javac.test.processorpath" value="${javac.test.classpath}"/>
         <condition property="ap.supported.internal" value="true">
             <not>
@@ -1069,7 +1069,7 @@ is divided into following sections:
         <delete file="${built-jar.properties}" quiet="true"/>
     </target>
     <target if="already.built.jar.${basedir}" name="-warn-already-built-jar">
-        <echo level="warn" message="Cycle detected: week3_T1 was already built"/>
+        <echo level="warn" message="Cycle detected: T2 was already built"/>
     </target>
     <target depends="init,-deps-jar-init" name="deps-jar" unless="no.deps">
         <mkdir dir="${build.dir}"/>
@@ -1107,7 +1107,7 @@ is divided into following sections:
     <target depends="init,deps-jar,-pre-pre-compile,-pre-compile, -copy-persistence-xml,-compile-depend" if="have.sources" name="-do-compile">
         <j2seproject3:javac gensrcdir="${build.generated.sources.dir}"/>
         <copy todir="${build.classes.dir}">
-            <fileset dir="../src" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
+            <fileset dir="${src.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
         </copy>
     </target>
     <target if="has.persistence.xml" name="-copy-persistence-xml">
@@ -1142,7 +1142,7 @@ is divided into following sections:
             -->
     <target depends="init" name="-pre-pre-jar">
         <dirname file="${dist.jar}" property="dist.jar.dir"/>
-        <mkdir dir="/"/>
+        <mkdir dir="${dist.jar.dir}"/>
     </target>
     <target name="-pre-jar">
         <!-- Empty placeholder for easier customization. -->
@@ -1164,24 +1164,24 @@ is divided into following sections:
         </condition>
     </target>
     <target depends="-check-module-main-class" if="do.module.main.class" name="-set-module-main-class">
-        <taskdef classname="org.netbeans.modules.java.j2seproject.moduletask.ModuleMainClass" classpath="../../../../../../../../../../../Program Files/Netbeans/netbeans/java/ant/extra/org-netbeans-modules-java-j2seproject-copylibstask.jar" name="modulemainclass"/>
+        <taskdef classname="org.netbeans.modules.java.j2seproject.moduletask.ModuleMainClass" classpath="${libs.CopyLibs.classpath}" name="modulemainclass"/>
         <modulemainclass failonerror="false" mainclass="${main.class}" moduleinfo="${build.classes.dir}/module-info.class"/>
     </target>
     <target depends="init" if="do.archive" name="-do-jar-create-manifest" unless="manifest.available">
         <tempfile deleteonexit="true" destdir="${build.dir}" property="tmp.manifest.file"/>
-        <touch file="build-impl.xml" verbose="false"/>
+        <touch file="${tmp.manifest.file}" verbose="false"/>
     </target>
     <target depends="init" if="do.archive+manifest.available" name="-do-jar-copy-manifest">
         <tempfile deleteonexit="true" destdir="${build.dir}" property="tmp.manifest.file"/>
-        <copy encoding="${manifest.encoding}" file="../manifest.mf" outputencoding="UTF-8" tofile="build-impl.xml"/>
+        <copy encoding="${manifest.encoding}" file="${manifest.file}" outputencoding="UTF-8" tofile="${tmp.manifest.file}"/>
     </target>
     <target depends="init,-do-jar-create-manifest,-do-jar-copy-manifest" if="do.archive+main.class.available" name="-do-jar-set-mainclass">
-        <manifest encoding="UTF-8" file="build-impl.xml" mode="update">
+        <manifest encoding="UTF-8" file="${tmp.manifest.file}" mode="update">
             <attribute name="Main-Class" value="${main.class}"/>
         </manifest>
     </target>
     <target depends="init,-do-jar-create-manifest,-do-jar-copy-manifest" if="do.archive+profile.available" name="-do-jar-set-profile">
-        <manifest encoding="UTF-8" file="build-impl.xml" mode="update">
+        <manifest encoding="UTF-8" file="${tmp.manifest.file}" mode="update">
             <attribute name="Profile" value="${javac.profile}"/>
         </manifest>
     </target>
@@ -1189,7 +1189,7 @@ is divided into following sections:
         <basename file="${application.splash}" property="splashscreen.basename"/>
         <mkdir dir="${build.classes.dir}/META-INF"/>
         <copy failonerror="false" file="${application.splash}" todir="${build.classes.dir}/META-INF"/>
-        <manifest encoding="UTF-8" file="build-impl.xml" mode="update">
+        <manifest encoding="UTF-8" file="${tmp.manifest.file}" mode="update">
             <attribute name="SplashScreen-Image" value="META-INF/${splashscreen.basename}"/>
         </manifest>
     </target>
@@ -1200,7 +1200,7 @@ is divided into following sections:
         <echo level="info">java -jar "${dist.jar.resolved}"</echo>
     </target>
     <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen" if="do.archive" name="-do-jar-jar" unless="do.mkdist">
-        <j2seproject1:jar manifest="build-impl.xml"/>
+        <j2seproject1:jar manifest="${tmp.manifest.file}"/>
         <property location="${build.classes.dir}" name="build.classes.dir.resolved"/>
         <property location="${dist.jar}" name="dist.jar.resolved"/>
         <condition else="${dist.jar.resolved}" property="jar.usage.message.class.path.replacement" value="">
@@ -1212,7 +1212,7 @@ is divided into following sections:
         </pathconvert>
         <pathconvert property="run.modulepath.with.dist.jar">
             <path location="${dist.jar.resolved}"/>
-            <path path="build-impl.xml"/>
+            <path path="${run.modulepath}"/>
             <map from="${build.classes.dir.resolved}" to="${dist.jar.resolved}"/>
         </pathconvert>
         <condition else="${run.modulepath}" property="jar.usage.message.run.modulepath.with.dist.jar" value="${run.modulepath.with.dist.jar}">
@@ -1243,7 +1243,7 @@ is divided into following sections:
     </target>
     <target depends="-do-jar-copylibs" if="do.archive" name="-do-jar-delete-manifest">
         <delete>
-            <fileset file="build-impl.xml"/>
+            <fileset file="${tmp.manifest.file}"/>
         </delete>
     </target>
     <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-do-jar-jar,-do-jar-delete-manifest" name="-do-jar-without-libraries"/>
@@ -1504,9 +1504,9 @@ is divided into following sections:
         </condition>
         <javadoc additionalparam="-J-Dfile.encoding=${file.encoding} ${javadoc.additionalparam}" author="${javadoc.author}" charset="UTF-8" destdir="${dist.javadoc.dir}" docencoding="UTF-8" encoding="${javadoc.encoding.used}" failonerror="true" noindex="${javadoc.noindex}" nonavbar="${javadoc.nonavbar}" notree="${javadoc.notree}" private="${javadoc.private}" source="${javac.source}" splitindex="${javadoc.splitindex}" use="${javadoc.use}" useexternalfile="true" version="${javadoc.version}" windowtitle="${javadoc.windowtitle}">
             <classpath>
-                <path path="build-impl.xml"/>
+                <path path="${javac.classpath}"/>
             </classpath>
-            <fileset dir="../src" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
+            <fileset dir="${src.dir}" excludes="${bug5101868workaround},${excludes}" includes="${includes}">
                 <filename name="**/*.java"/>
             </fileset>
             <fileset dir="${build.generated.sources.dir}" erroronmissingdir="false">
@@ -1517,7 +1517,7 @@ is divided into following sections:
             <arg line="${javadoc.html5.cmd.line.arg}"/>
         </javadoc>
         <copy todir="${dist.javadoc.dir}">
-            <fileset dir="../src" excludes="${excludes}" includes="${includes}">
+            <fileset dir="${src.dir}" excludes="${excludes}" includes="${includes}">
                 <filename name="**/doc-files/**"/>
             </fileset>
             <fileset dir="${build.generated.sources.dir}" erroronmissingdir="false">
@@ -1725,7 +1725,7 @@ is divided into following sections:
         <delete file="${built-clean.properties}" quiet="true"/>
     </target>
     <target if="already.built.clean.${basedir}" name="-warn-already-built-clean">
-        <echo level="warn" message="Cycle detected: week3_T1 was already built"/>
+        <echo level="warn" message="Cycle detected: T2 was already built"/>
     </target>
     <target depends="init,-deps-clean-init" name="deps-clean" unless="no.deps">
         <mkdir dir="${build.dir}"/>
