@@ -14,7 +14,15 @@ public class Mainclass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        BottleDispenser PulloMaatti = new BottleDispenser();
+
+        PulloMaatti.addMoney();
+        PulloMaatti.buyBottle();
+        PulloMaatti.buyBottle();
+        PulloMaatti.addMoney();
+        PulloMaatti.addMoney();
+        PulloMaatti.buyBottle();
+        PulloMaatti.returnMoney();
     }
     
 }

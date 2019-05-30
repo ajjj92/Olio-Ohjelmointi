@@ -27,8 +27,9 @@ public class BottleDispenser {
     }
     
     public void buyBottle() {
-        if(money != 0){
+        if(money > 0){
             bottles -= 1;
+            money -= 1;
             System.out.println("KACHUNK! Pullo tipahti masiinasta!");
         }else{
             System.out.println("Syötä rahaa ensin!");
