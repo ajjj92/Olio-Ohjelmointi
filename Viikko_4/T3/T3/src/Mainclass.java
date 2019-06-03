@@ -16,7 +16,8 @@ public class Mainclass {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        ReadAndWriteIO lueteksti = new ReadAndWriteIO();
+        ReadAndWriteIO IOstuff = new ReadAndWriteIO();
+        IOstuff.readAndWrite("input.txt", "output.txt");
        
     }
     
