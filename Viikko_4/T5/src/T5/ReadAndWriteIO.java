@@ -34,6 +34,7 @@ public class ReadAndWriteIO {
                 while((line = br.readLine()) != null) {
                     System.out.println(line);
                 }
+                zf.close();
             }
 
 
