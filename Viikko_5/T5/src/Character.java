@@ -49,7 +49,7 @@ public class Character {
     }
 
     public class Weapon{
-        private String weaponname;
+
 
         public Weapon() {
             //construct
