@@ -23,7 +23,7 @@ public class Mainclass {
 
             switch (valinta) {
                 case 1:
-                    System.out.println("Valitse hahmosi:");
+                    System.out.println("Valitse hahmosi: ");
                     System.out.println("1) Kuningas");
                     System.out.println("2) Ritari");
                     System.out.println("3) Kuningatar");
@@ -45,7 +45,7 @@ public class Mainclass {
                             hahmo = hahmo.new Troll();
                             break;
                     }
-                    System.out.println("Valitse aseesi:");
+                    System.out.println("Valitse aseesi: ");
                     System.out.println("1) Veitsi");
                     System.out.println("2) Kirves");
                     System.out.println("3) Miekka");

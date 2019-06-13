@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f2ea1728-32a9-458c-b5f8-796982b58418" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Mainclass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mainclass.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +24,7 @@
         <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+              <caret line="55" column="47" lean-forward="true" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -31,9 +32,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Character.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+            <state relative-caret-position="230">
+              <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
               <folding>
+                <element signature="e#296#297#0" expanded="true" />
+                <element signature="e#393#394#0" expanded="true" />
                 <element signature="e#425#426#0" expanded="true" />
                 <element signature="e#483#484#0" expanded="true" />
                 <element signature="e#363#364#0" expanded="true" />
@@ -162,7 +165,7 @@
     <frame x="0" y="32" width="1920" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.496875" visible="true" weight="0.12726304" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.496875" visible="true" weight="0.12726304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -171,7 +174,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.503125" side_tool="true" visible="true" weight="0.12726304" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32914045" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32914045" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -194,15 +197,17 @@
     <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
-          <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+          <caret line="55" column="47" lean-forward="true" selection-start-line="55" selection-start-column="47" selection-end-line="55" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Character.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+        <state relative-caret-position="230">
+          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
           <folding>
+            <element signature="e#296#297#0" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
             <element signature="e#425#426#0" expanded="true" />
             <element signature="e#483#484#0" expanded="true" />
             <element signature="e#363#364#0" expanded="true" />

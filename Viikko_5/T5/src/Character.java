@@ -17,12 +17,12 @@ public class Character {
     }
 
     public void printFight() {
-        System.out.println(String.format("%s taistelee aseella %s", charactername, weaponname));
+        System.out.println(String.format("%s tappelee aseella %s", charactername, weaponname));
     }
 
     class Knight extends Character {
         public Knight() {
-            charactername = "Ritari";
+            charactername = "Knight";
         }
 
 
@@ -30,21 +30,21 @@ public class Character {
 
     class King extends Character {
         public King() {
-            charactername = "Kuningas";
+            charactername = "King";
         }
 
     }
 
     class Queen extends Character {
         public Queen() {
-            charactername = "Kuningatar";
+            charactername = "Queen";
         }
 
     }
 
     class Troll extends Character {
         public Troll() {
-            charactername = "Peikko";
+            charactername = "Troll";
         }
     }
 
@@ -59,23 +59,23 @@ public class Character {
 
     class Knife extends Weapon {
         public Knife() {
-            weaponname = "Veitsi";
+            weaponname = "Knife";
         }
     }
 
     class Axe extends Weapon {
         public Axe() {
-            weaponname = "Kirves";
+            weaponname = "Axe";
         }
     }
     class Sword extends Weapon {
         public Sword() {
-            weaponname = "Miekka";
+            weaponname = "Sword";
         }
     }
     class Club extends Weapon {
         public Club() {
-            weaponname = "Nuija";
+            weaponname = "Club";
         }
     }
 
