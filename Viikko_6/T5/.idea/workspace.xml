@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b18e42a5-ce36-4d80-b1eb-295761608e2d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mainclass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mainclass.java" afterDir="false" />
+    <list default="true" id="003a66b9-392c-4e14-9d50-9597eedb8edf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../T3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank$Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank$Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank$CreditAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank$CreditAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank$DailyAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank$DailyAccount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Mainclass.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Mainclass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../T3/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/src/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../T3/src/Mainclass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/src/Mainclass.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,18 +19,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="64" column="49" selection-end-line="90" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -32,10 +36,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="99" selection-end-line="110" />
+            <state relative-caret-position="221">
+              <caret line="13" column="21" lean-forward="true" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#Account#0;class#Account#0" />
+                <element signature="class#CreditAccount#0;class#Account#0" />
+                <element signature="class#DailyAccount#0;class#Account#0" />
+                <element signature="method#rmAccount#0;class#Account#0" />
+                <element signature="method#addMoney#0;class#Account#0" />
+                <element signature="method#takeMoney#0;class#Account#0" />
+                <element signature="method#printMenu#0;class#Account#0" />
+                <element signature="method#addCreditAccount#0;class#Account#0" />
+                <element signature="method#addDailyAccount#0;class#Account#0" />
               </folding>
             </state>
           </provider>
@@ -46,6 +68,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -58,6 +81,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/Bank.java" />
         <option value="$PROJECT_DIR$/src/Mainclass.java" />
+        <option value="$PROJECT_DIR$/src/Account.java" />
       </list>
     </option>
   </component>
@@ -69,10 +93,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="11" />
-    <option name="y" value="43" />
-    <option name="width" value="1895" />
-    <option name="height" value="1038" />
+    <option name="x" value="14" />
+    <option name="y" value="44" />
+    <option name="width" value="1892" />
+    <option name="height" value="1022" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -88,13 +112,8 @@
         <subPane>
           <expand>
             <path>
-              <item name="T3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="T3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="T3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="T3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="T5" type="b2602c69:ProjectViewProjectNode" />
+              <item name="T5" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -103,8 +122,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -121,7 +139,7 @@
   <component name="RunManager">
     <configuration name="Mainclass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Mainclass" />
-      <module name="T3" />
+      <module name="T5" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -137,18 +155,19 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b18e42a5-ce36-4d80-b1eb-295761608e2d" name="Default Changelist" comment="" />
-      <created>1560499614221</created>
+      <changelist id="003a66b9-392c-4e14-9d50-9597eedb8edf" name="Default Changelist" comment="" />
+      <created>1560545791611</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1560499614221</updated>
+      <updated>1560545791611</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="11" y="43" width="1895" height="1038" extended-state="0" />
+    <frame x="14" y="44" width="1892" height="1022" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2137075" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2583784" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -157,15 +176,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32415253" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35344827" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3993644" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3297414" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32944915" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -179,20 +198,33 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="99" selection-end-line="110" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="221">
+          <caret line="13" column="21" lean-forward="true" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="49" selection-end-line="90" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#Account#0;class#Account#0" />
+            <element signature="class#CreditAccount#0;class#Account#0" />
+            <element signature="class#DailyAccount#0;class#Account#0" />
+            <element signature="method#rmAccount#0;class#Account#0" />
+            <element signature="method#addMoney#0;class#Account#0" />
+            <element signature="method#takeMoney#0;class#Account#0" />
+            <element signature="method#printMenu#0;class#Account#0" />
+            <element signature="method#addCreditAccount#0;class#Account#0" />
+            <element signature="method#addDailyAccount#0;class#Account#0" />
           </folding>
         </state>
       </provider>
