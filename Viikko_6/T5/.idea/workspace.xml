@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="003a66b9-392c-4e14-9d50-9597eedb8edf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../T3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank$Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank$Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank$CreditAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank$CreditAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank$DailyAccount.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank$DailyAccount.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Bank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../T3/out/production/T3/Mainclass.class" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/out/production/T3/Mainclass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../T3/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../T3/src/Mainclass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../T3/src/Mainclass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,7 +21,7 @@
         <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -37,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/Bank.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="21" lean-forward="true" selection-end-line="16" />
+              <caret line="13" column="21" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -45,8 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+            <state relative-caret-position="346">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Account#0;class#Account#0" />
@@ -106,8 +99,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,10 +110,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Viikko_3/T1" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -165,9 +161,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="14" y="44" width="1892" height="1022" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2583784" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12864865" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -176,7 +171,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35344827" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.35344827" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993644" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -196,24 +191,24 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="21" lean-forward="true" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="21" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
+        <state relative-caret-position="346">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Account#0;class#Account#0" />
