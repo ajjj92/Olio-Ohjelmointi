@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cfb4ef69-add0-4613-a4b2-749bc17a24dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../T1/week3_T1/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../T1/week3_T1/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../T1/week3_T1/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../T1/week3_T1/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../T1/week3_T1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../T1/week3_T1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../T1/week3_T1/week3_T1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../T1/week3_T1/T1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Viikko_6/T5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Viikko_6/T5/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Viikko_7/T5/app/src/main/java/com/example/t5/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Viikko_7/T5/app/src/main/java/com/example/t5/MainActivity.java" afterDir="false" />
     </list>
@@ -18,8 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DefaultGradleProjectSettings">
-    <option name="testRunner" value="GRADLE" />
-    <option name="delegatedBuild" value="true" />
+    <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -36,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/BottleDispenser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -98,6 +92,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -145,7 +140,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="14" y="59" width="1892" height="1022" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24972972" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -193,7 +187,7 @@
     <entry file="file://$PROJECT_DIR$/src/BottleDispenser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
         </state>
       </provider>
     </entry>

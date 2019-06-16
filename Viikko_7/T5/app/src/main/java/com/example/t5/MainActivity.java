@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView text;
     EditText syotto;
-    String filenimi;
+    String filenimi = null;
     AlertDialog.Builder alert;
     Context context = null;
 
