@@ -10,7 +10,7 @@ public class Mainclass {
     public static void main(String[] args) {
 
         Scanner lukija = new Scanner(System.in);
-        final Account pankkirajapinta = new Account() {};
+        final Bank pankkirajapinta = new Bank();
         boolean running = true;
 
         while(running) {
