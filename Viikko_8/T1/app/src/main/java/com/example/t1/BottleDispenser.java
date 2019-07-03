@@ -19,7 +19,7 @@ public class BottleDispenser {
 
     public BottleDispenser() {
         bottles = 6;
-        money = 100;
+        money = 0;
 
 
         pullot.add(new Bottle("Pepsi Max", 0.5f, 1.80f));
@@ -43,33 +43,37 @@ public class BottleDispenser {
     }
 
 
-    public void addMoney() {
+    public String addMoney() {
+        printti="";
         money += 1;
-        System.out.println("Klink! Lisää rahaa laitteeseen!");
+        printti +="Klink! Lisää rahaa laitteeseen!";
+        return printti;
     }
 
-    public void buyBottle(int pullonumero) {
+    public String buyBottle(int pullonumero) {
+        printti = "";
         if(pullonumero < pullot.size()){
 
             if(money - pullot.get(pullonumero).getPrice() >= 0 && !pullot.isEmpty()){
                 money -= pullot.get(pullonumero).getPrice();
-                System.out.println(String.format("KACHUNK! %s tipahti masiinasta!", pullot.get(pullonumero).getName()));
+                printti += String.format("KACHUNK! %s tipahti masiinasta!", pullot.get(pullonumero).getName());
                 pullot.remove((pullonumero));
             }else{
-                System.out.println("Syötä rahaa ensin!");
+                printti +="Syötä rahaa ensin!";
             }
 
         } else {
-            System.out.println("EMPTY");
+            printti +="EMPTY";
         }
 
-
+        return printti;
     }
-    public void returnMoney() {
+    public String returnMoney() {
 
-
-        System.out.println(String.format("Klink klink. Sinne menivät rahat! Rahaa tuli ulos %.2f€", money));
+        printti = "";
+        printti += String.format("Klink klink. Sinne menivät rahat! Rahaa tuli ulos %.2f€", money);
         money = 0;
+        return printti;
     }
     public String printBottles() {
         int i;

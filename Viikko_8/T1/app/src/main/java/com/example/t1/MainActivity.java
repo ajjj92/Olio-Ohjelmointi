@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     protected  TextView screen;
     protected  BottleDispenser pullomaatti;
+    private TextView printscreen;
+    private Button changeout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         pullomaatti = BottleDispenser.getInstance();
         screen = (TextView) findViewById(R.id.textView);
         screen.setText(pullomaatti.printBottles());
+        printscreen = (TextView) findViewById(R.id.textView2);
+        changeout = (Button) findViewById(R.id.button2);
 
 
 
@@ -36,26 +40,37 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void addMoney(View view) {
-        pullomaatti.addMoney();
 
+    public void addMoney(View view) {
+        printscreen.setText(pullomaatti.addMoney());
+
+    }
+
+    public void changeout(View view) {
+        printscreen.setText(pullomaatti.returnMoney());
     }
 
     public void buyBottle(View view) {
 
         switch (view.getId()) {
             case R.id.pullo1:
-                pullomaatti.buyBottle(0);
+                printscreen.setText(pullomaatti.buyBottle(0));
                 break;
             case R.id.pullo2:
-                pullomaatti.buyBottle(1);
+                printscreen.setText(pullomaatti.buyBottle(1));
                 break;
             case R.id.pullo3:
-                pullomaatti.buyBottle(2);
+                printscreen.setText(pullomaatti.buyBottle(2));
                 break;
             case  R.id.pullo4:
-                refreshScreen();
-
+                printscreen.setText(pullomaatti.buyBottle(3));
+                break;
+            case R.id.pullo5:
+                printscreen.setText(pullomaatti.buyBottle(4));
+                break;
+            case R.id.pullo6:
+                printscreen.setText(pullomaatti.buyBottle(5));
+                break;
         }
         refreshScreen();
 

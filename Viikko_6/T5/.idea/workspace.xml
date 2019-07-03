@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="003a66b9-392c-4e14-9d50-9597eedb8edf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/T5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/T5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Mainclass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Mainclass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_8/T1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_8/T1/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_8/T1/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_8/T1/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_8/T1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_8/T1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_8/T1/T1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_8/T1/T1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_8/T1/out/production/T1/Bottle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_8/T1/out/production/T1/BottleDispenser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_8/T1/out/production/T1/Mainclass.class" beforeDir="false" />
-    </list>
+    <list default="true" id="003a66b9-392c-4e14-9d50-9597eedb8edf" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -54,11 +40,9 @@
         <entry file="file://$PROJECT_DIR$/src/Account.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="method#Account#0;class#Account#0" />
-                <element signature="e#533#534#0" expanded="true" />
-                <element signature="e#579#580#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -180,7 +164,7 @@
   <component name="ToolWindowManager">
     <frame x="14" y="44" width="1892" height="1022" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09351351" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09405405" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -211,8 +195,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Mainclass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -230,11 +214,9 @@
     <entry file="file://$PROJECT_DIR$/src/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="method#Account#0;class#Account#0" />
-            <element signature="e#533#534#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
           </folding>
         </state>
       </provider>

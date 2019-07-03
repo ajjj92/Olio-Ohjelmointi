@@ -10,19 +10,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9113575b-aa4f-4316-8cd5-31a4e2d7243b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/T5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/T5.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_3/T5/T5/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/androidTest/java/com/example/t3/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/java/com/example/t3/Bottle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/java/com/example/t3/BottleDispenser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/java/com/example/t3/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/app/src/test/java/com/example/t3/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../T3/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Viikko_6/T5/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_6/T5/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_6/T5/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_6/T5/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_6/T5/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_6/T5/src/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Viikko_6/T5/src/Mainclass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Viikko_6/T5/src/Mainclass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/T1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/T1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/T1/Bottle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/T1/BottleDispenser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/T1/Mainclass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/t1/BottleDispenser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/t1/BottleDispenser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/t1/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/t1/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,19 +76,23 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="1755">
-              <caret line="117" column="38" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="38" />
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="138" column="32" selection-end-line="170" selection-end-column="52" />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/t1/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="481">
+              <caret line="77" column="1" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="77" selection-end-column="1" />
+              <folding>
+                <element signature="e#1229#1230#0" expanded="true" />
+                <element signature="e#1255#1256#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/t1/Bottle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -74,11 +109,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/t1/BottleDispenser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="639">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="525">
+              <caret line="94" lean-forward="true" selection-start-line="10" selection-end-line="94" />
             </state>
           </provider>
         </entry>
@@ -99,17 +131,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/t1/Bottle.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/t1/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/t1/BottleDispenser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/t1/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="12" />
-    <option name="y" value="57" />
-    <option name="width" value="1892" />
-    <option name="height" value="1022" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="30" />
+    <option name="width" value="1920" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -119,17 +150,39 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="ProjectPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="T1" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="T1" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="T1" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="t1" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="device.picker.selection" value="Pixel_2_API_29" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Viikko_6/T5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -218,11 +271,21 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="12" y="57" width="1892" height="1022" extended-state="0" />
+    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.15891892" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15601704" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -231,15 +294,16 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info id="UI Designer" order="9" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.3275862" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.32938644" />
-      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49837488" weight="0.32673267" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49837488" weight="0.32893288" />
+      <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49891657" weight="0.32893288" />
       <window_info anchor="bottom" id="Debug" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.3297414" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49837488" weight="0.32893288" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5010811" side_tool="true" visible="true" weight="0.31903765" />
+      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.49837488" weight="0.32893288" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49891892" weight="0.3286638" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" />
+      <window_info anchor="bottom" id="Find" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -259,35 +323,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1755">
-          <caret line="117" column="38" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="38" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/t1/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="481">
+          <caret line="77" column="1" lean-forward="true" selection-start-line="20" selection-start-column="4" selection-end-line="77" selection-end-column="1" />
+          <folding>
+            <element signature="e#1229#1230#0" expanded="true" />
+            <element signature="e#1255#1256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="138" column="32" selection-end-line="170" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/t1/Bottle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/t1/BottleDispenser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="525">
+          <caret line="94" lean-forward="true" selection-start-line="10" selection-end-line="94" />
         </state>
       </provider>
     </entry>
