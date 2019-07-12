@@ -1,5 +1,6 @@
 package com.example.bankapp_aj;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -36,5 +37,9 @@ public void Bank_addUser(String name, String password) {
 }
 public ArrayList<User> Bank_getUserlist() {
         return Bank.getInstance().getUserlist();
+}
+
+public String XmlMethods_loadXml() throws IOException {
+    return new XmlMethods().readDatatoString();
 }
 }

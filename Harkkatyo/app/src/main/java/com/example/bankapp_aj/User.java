@@ -1,12 +1,13 @@
 package com.example.bankapp_aj;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * 7/11/19
  * AtteJantunen
  */
-public class User {
+public class User implements Serializable {
     private String name;
     private String address;
     private String password;
@@ -19,30 +20,34 @@ public class User {
         this.password = password;
     }
 
-    private void addAccountToUser(Account account) {
+    public void addAccountToUser(Account account) {
         this.accountlist.add(account);
     }
-    private void addCardToUser(Card card) {
+    public void addCardToUser(Card card) {
         this.cardlist.add(card);
     }
 
-    private String getName() {
+    public String getName() {
         return this.name;
     }
-    private String getAddress() {
+    public String getAddress() {
         return this.address;
     }
-    private ArrayList<Account> getAccountlist() {
+    public ArrayList<Account> getAccountlist() {
         return this.accountlist;
     }
-    private ArrayList<Card> getCardlist() {
+    public String getPassword() {
+        return this.password;
+    }
+    public ArrayList<Card> getCardlist() {
         return this.cardlist;
     }
-    private void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-    private void setAddress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
+
 
 }
