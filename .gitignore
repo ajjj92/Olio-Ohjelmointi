@@ -1,31 +1,4 @@
-/LUT_JAVA/nbproject/private/
-/LUT_JAVA/build/
-/LUT_JAVA/dist/
-/Viikko_3/java_week3/nbproject/private/
-/Viikko_3/week3_T1/nbproject/private/
-/Viikko_3/java_week3/T2/T2/nbproject/private/
-/Viikko_3/java_week3/T2/T2/build/
-/Viikko_3/java_week3/T3/T3/nbproject/private/
-/Viikko_3/java_week3/T3/T3/build/
-/Viikko_3/java_week3/T4/T4/nbproject/private/
-/Viikko_3/java_week3/T4/T4/build/
-/Viikko_3/java_week3/T4/T5/nbproject/private/
-/Viikko_3/java_week3/T5/T5/nbproject/private/
-/Viikko_3/java_week3/T5/T5/build/
-/Viikko_4/T1/T1/nbproject/private/
-/Viikko_2/build/
-/Viikko_2/dist/
-/Viikko_2/nbproject/private/
-/Viikko_4/T1/T1/build/
-/Viikko_4/T2/T2/nbproject/private/
-/Viikko_4/T2/T2/build/
-/Viikko_4/T3/T3/nbproject/private/
-/Viikko_4/T3/T3/build/
-/Viikko_4/T4/T4/nbproject/private/
-/Viikko_4/T4/T4/build/
-/Viikko_4/T4/T5/nbproject/private/
-/Viikko_4/T5/T5/nbproject/private/
-/Viikko_4/T5/T5/build/
+/build
 
 # Compiled class file
 *.class
