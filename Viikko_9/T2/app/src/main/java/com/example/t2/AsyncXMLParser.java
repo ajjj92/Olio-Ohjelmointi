@@ -51,6 +51,7 @@ public class AsyncXMLParser extends AsyncTask<Void, Void, Void> {
 
     }
 
+
     public String readDatatoString() throws IOException {
         URL url = new URL("https://www.finnkino.fi/xml/TheatreAreas/");
         BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
@@ -61,6 +62,9 @@ public class AsyncXMLParser extends AsyncTask<Void, Void, Void> {
         in.close();
         return  allines;
     }
+
+
+
     public void XmlParser() {
         try {
 

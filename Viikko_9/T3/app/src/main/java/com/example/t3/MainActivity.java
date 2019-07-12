@@ -1,6 +1,8 @@
 package com.example.t3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private TheaterControl controller;
     private Spinner spinner;
     public ArrayAdapter<Theater> adapt;
+    public ArrayAdapter<String> movieadapt;
+    private String date;
+    private ListView listv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +45,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         initUiComp();
         initListerners();
-        AsyncXMLParser parser = new AsyncXMLParser(adapt);
+        AsyncXMLParser parser = new AsyncXMLParser(adapt,movieadapt);
         parser.execute();
-
-
-
-
     }
 
     public void initUiComp() {
         controller = TheaterControl.getInstance();
 
-
         datetext = (TextView) findViewById(R.id.textView2);
         timetext = (TextView) findViewById(R.id.textView3);
-
-
         spinner = (Spinner) findViewById(R.id.spinner);
+        listv = (ListView) findViewById(R.id.listv);
+
         spinner.setOnItemSelectedListener(this);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapt);
+
+        movieadapt = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, controller.getMovieLista());
+        listv.setAdapter(movieadapt);
 
 
     }
@@ -112,8 +116,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month += 1;
-                Log.d("MainActivity", "onDateSet: date: " + day + "/" + month + "/" + year);
-                String date = String.format("%d/%d/%d", day, month, year);
+                Log.d("MainActivity", "onDateSet: date: " + day + "." + month + "." + year);
+                date = String.format("%d.%d.%d", day, month, year);
                 datetext.setText(date);
             }
         };
@@ -125,17 +129,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         // An item was selected. You can retrieve the selected item using
         spinner.setSelection(pos);
     }
+    public void searchMovies(View view) {
+        controller.ClearMovieList();
+        Theater objekti = (Theater) spinner.getSelectedItem();
+        AsyncXMLParser parser = new AsyncXMLParser(adapt, movieadapt, controller.createUrl(objekti, date));
+        parser.execute();
+
+    }
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
 
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-
-    }
-
 }
+
+
+
 
 
