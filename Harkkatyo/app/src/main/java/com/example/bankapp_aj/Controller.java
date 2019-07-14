@@ -42,4 +42,7 @@ public ArrayList<User> Bank_getUserlist() {
 public String XmlMethods_loadXml() throws IOException {
     return new XmlMethods().readDatatoString();
 }
+public void Bank_addAccountToUser(User user) {
+        Bank.getInstance().addAccountToUser(user);
+}
 }

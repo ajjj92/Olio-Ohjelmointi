@@ -6,7 +6,7 @@ package com.example.bankapp_aj;
  * AtteJantunen
  */
 public abstract class Account {
-
+    protected int id;
     private int moneyamount;
     private double interest;
     private String accounttype;
@@ -24,6 +24,7 @@ class SavingAccount extends Account {
 class DailyAccount extends Account {
 
     public DailyAccount() {
+        this.id = 123123123;
         //dostuff
     }
 

@@ -2,15 +2,21 @@ package com.example.bankapp_aj;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.ContactsContract;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigInteger;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  * 7/12/19
@@ -71,6 +77,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             oos.flush();
             oos.close();
             byte [] userbytes = bos.toByteArray();
+            ByteArrayInputStream bais = new ByteArrayInputStream(userbytes);
             return userbytes;
 
 
@@ -82,17 +89,40 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
-    public User returnUserObjectfromBytes(byte[] data) {
+
+    public User returnObject(byte[] data) {
         try {
+
+            //convert byte array back to object
             ByteArrayInputStream baip = new ByteArrayInputStream(data);
             ObjectInputStream ois = new ObjectInputStream(baip);
-            User user = (User) ois.readObject();
-            return user;
+            User dataobj = (User ) ois.readObject();
+            return dataobj;
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ArrayList<User> queryUserlist() throws IOException {
+        String sql = "SELECT * from userdata";
+        database = this.getReadableDatabase();
+        ArrayList<User> userlist = new ArrayList<>();
+        Cursor cursor = database.rawQuery(sql, null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false) {
+
+            byte[] data = cursor.getBlob(2);
+            User user = returnObject(data);
+            System.out.println(user.getPassword());
+            cursor.moveToNext();
+
+        }
+        cursor.close();
+        return userlist;
+
     }
 }

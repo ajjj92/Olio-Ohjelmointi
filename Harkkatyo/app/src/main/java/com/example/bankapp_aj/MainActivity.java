@@ -2,6 +2,7 @@ package com.example.bankapp_aj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -24,16 +25,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void printname(View view) throws IOException {
-
+    public void testbutton(View view) throws IOException {
+        dataBaseHandler.queryUserlist();
     }
 
     public void testiadd(View view) {
-        controller.Bank_addUser("Atte", "passu");
+        controller.Bank_addUser("Atte", "bytesarraypassu");
         boolean insertdata = dataBaseHandler.addData(controller.Bank_getUserlist().get(i));
+        controller.Bank_addAccountToUser(controller.Bank_getUserlist().get(i));
         i++;
     }
     public void testUserList(View view) {
         System.out.println(controller.Bank_getUserlist());
     }
+
+
 }

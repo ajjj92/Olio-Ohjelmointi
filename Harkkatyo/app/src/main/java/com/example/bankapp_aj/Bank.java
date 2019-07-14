@@ -35,5 +35,7 @@ public class Bank {
     public ArrayList<User> getUserlist() {
         return  userlist;
     }
-
+    public void addAccountToUser(User user) {
+        user.addAccountToUser(new DailyAccount());
+    }
 }
