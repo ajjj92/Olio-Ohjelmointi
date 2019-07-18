@@ -1,5 +1,8 @@
 package com.example.bankapp_aj;
 
+import android.content.Context;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -9,11 +12,13 @@ import java.util.ArrayList;
 public class Bank {
     private static Bank bank;
     private static ArrayList<User> userlist = new ArrayList<>();
-    private String name="AJ_BANK";
+    private String name = "AJ_BANK";
+    private User activeuser;
 
     private Bank() {
 
     }
+
     //Singleton Principle
     public static Bank getInstance() {
         if (bank == null) {
@@ -28,14 +33,27 @@ public class Bank {
         userlist.add(user);
     }
 
+    public User getActiveuser() {
+        return this.activeuser;
+    }
+
+    public void setActiveuser(User user ) {
+        this.activeuser = user;
+    }
+
     public String getName() {
         return this.name;
     }
 
-    public ArrayList<User> getUserlist() {
-        return  userlist;
+
+
+
+    public ArrayList<User> Bank_getUserlist() {
+        return userlist;
     }
-    public void addAccountToUser(User user) {
-        user.addAccountToUser(new DailyAccount());
+
+    public void queryDatabase(DataBaseHandler dataBaseHandler) throws IOException {
+        //user = dataBaseHandler.queryUserdata("testimies");
+
     }
 }

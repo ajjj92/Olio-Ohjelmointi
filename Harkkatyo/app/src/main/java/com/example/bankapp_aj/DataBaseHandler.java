@@ -5,18 +5,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
+
 import java.io.IOException;
-import java.io.ObjectInput;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.math.BigInteger;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+
 
 /**
  * 7/12/19
@@ -30,15 +27,16 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_PASSWORD = "password";
     private static final String COLUMN_USERBYTES = "objectBytes";
+    private static SQLiteDatabase database;
 
 
-    SQLiteDatabase database;
 
     public DataBaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         database = getWritableDatabase();
 
     }
+
 
 
     @Override
@@ -70,7 +68,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     public byte[] makeUserObjecttoBytes(User user) {
         try {
-
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(bos);
             oos.writeObject(user);
@@ -79,16 +76,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             byte [] userbytes = bos.toByteArray();
             ByteArrayInputStream bais = new ByteArrayInputStream(userbytes);
             return userbytes;
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
         return null;
     }
-
 
     public User returnObject(byte[] data) {
         try {
@@ -107,22 +99,20 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
-    public ArrayList<User> queryUserlist() throws IOException {
-        String sql = "SELECT * from userdata";
+    public User queryUserdata(String name, String pass) throws IOException {
+        String sql = "SELECT * FROM userdata";
         database = this.getReadableDatabase();
-        ArrayList<User> userlist = new ArrayList<>();
         Cursor cursor = database.rawQuery(sql, null);
         cursor.moveToFirst();
         while (cursor.isAfterLast() == false) {
-
             byte[] data = cursor.getBlob(2);
             User user = returnObject(data);
-            System.out.println(user.getPassword());
+            if(cursor.getString(cursor.getColumnIndex("id")).equals(name) && cursor.getString(cursor.getColumnIndex("password")).equals(pass)) {
+                return user;
+            }
             cursor.moveToNext();
-
         }
         cursor.close();
-        return userlist;
-
+        return null;
     }
 }

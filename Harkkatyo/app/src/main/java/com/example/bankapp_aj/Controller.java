@@ -14,35 +14,17 @@ import java.util.ArrayList;
 public class Controller {
     private static Controller controller;
     private Bank bank;
+
     private Controller() {
 
     }
 
-//Singleton Principle
-public static Controller getInstance() {
-    if (controller == null) {
-        controller = new Controller();
+    //Singleton Principle
+    public static Controller getInstance() {
+        if (controller == null) {
+            controller = new Controller();
+        }
+        return controller;
     }
-    return controller;
 }
 
-public void Bank_create() {
-   bank = Bank.getInstance();
-}
-public String Bank_getName() {
-        return Bank.getInstance().getName();
-}
-public void Bank_addUser(String name, String password) {
-    Bank.getInstance().createUser(name, password);
-}
-public ArrayList<User> Bank_getUserlist() {
-        return Bank.getInstance().getUserlist();
-}
-
-public String XmlMethods_loadXml() throws IOException {
-    return new XmlMethods().readDatatoString();
-}
-public void Bank_addAccountToUser(User user) {
-        Bank.getInstance().addAccountToUser(user);
-}
-}

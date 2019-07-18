@@ -18,6 +18,18 @@ public class User implements Serializable {
     public User(String name, String password) {
         this.name = name;
         this.password = password;
+
+    }
+
+    public void transferMoney(int from, int to, float transferamount) {
+        if (from != to) {
+            if (transferamount <= this.accountlist.get(from).getMoneyamount()) {
+                this.accountlist.get(from).takeMoney(transferamount);
+                this.accountlist.get(to).addMoney(transferamount);
+
+            }
+        }
+
     }
 
     public void addAccountToUser(Account account) {
@@ -34,7 +46,12 @@ public class User implements Serializable {
         return this.address;
     }
     public ArrayList<Account> getAccountlist() {
-        return this.accountlist;
+        if (accountlist.isEmpty()) {
+            return null;
+        } else {
+            return this.accountlist;
+
+        }
     }
     public String getPassword() {
         return this.password;

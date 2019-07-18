@@ -1,10 +1,12 @@
 package com.example.bankapp_aj;
 
+import java.io.Serializable;
+
 /**
  * 7/11/19
  * AtteJantunen
  */
-public abstract class Card {
+public abstract class Card implements Serializable {
     private String cardtype;
     private int paymentlimit;
     private int takelimit;
