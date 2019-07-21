@@ -21,7 +21,7 @@ public class AccountActivity implements Serializable {
     public AccountActivity(String payee, String receiver, float moneyamount) {
 
         this.payee = payee;
-        this. receiver = receiver;
+        this.receiver = receiver;
         this.moneyamount = moneyamount;
 
         this.date = formatter.format(new Date(System.currentTimeMillis()));

@@ -11,15 +11,25 @@ public class User implements Serializable {
     private String name;
     private String address;
     private String password;
-    private ArrayList<Account> accountlist = new ArrayList<>();
-    private ArrayList<Card> cardlist = new ArrayList<>();
+    private ArrayList<Account> accountlist;
+    private ArrayList<Card> cardlist;
+    private static final long serialVersionUID = 4L;
 
 
+    public User(String name, String password, ArrayList<Account> accountlist, ArrayList<Card> cardlist) {
+        this.name = name;
+        this.password = password;
+        this.accountlist = accountlist;
+        this.cardlist = cardlist;
+
+    }
     public User(String name, String password) {
         this.name = name;
         this.password = password;
-
+        this.cardlist = new ArrayList<>();
+        this.accountlist = new ArrayList<>();
     }
+
 
     public void transferMoney(int from, int to, float transferamount) {
         if (from != to) {
@@ -55,6 +65,9 @@ public class User implements Serializable {
     }
     public String getPassword() {
         return this.password;
+    }
+    public void setPassword(String pass) {
+        this.password = pass;
     }
     public ArrayList<Card> getCardlist() {
         return this.cardlist;

@@ -13,7 +13,8 @@ public class Bank {
     private static Bank bank;
     private static ArrayList<User> userlist = new ArrayList<>();
     private String name = "AJ_BANK";
-    private User activeuser;
+    private User activeuser=null;
+    private int activeuser_id=0;
 
     private Bank() {
 
@@ -40,6 +41,12 @@ public class Bank {
     public void setActiveuser(User user ) {
         this.activeuser = user;
     }
+    public void setActiveuser_id(int i) {
+        this.activeuser_id = i;
+    }
+    public int getActiveuser_id() {
+        return this.activeuser_id;
+    }
 
     public String getName() {
         return this.name;
@@ -52,8 +59,5 @@ public class Bank {
         return userlist;
     }
 
-    public void queryDatabase(DataBaseHandler dataBaseHandler) throws IOException {
-        //user = dataBaseHandler.queryUserdata("testimies");
 
-    }
 }

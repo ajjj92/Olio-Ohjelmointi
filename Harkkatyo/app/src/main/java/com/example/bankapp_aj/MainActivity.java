@@ -1,6 +1,7 @@
 package com.example.bankapp_aj;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -8,6 +9,9 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView tomoney;
     private ArrayAdapter<Account> adapt;
     private ArrayAdapter<AccountActivity> actadapt;
-    ArrayList<AccountActivity> reverselist;
     private Fragment transferfragmnet;
     private Fragment paymentfragment;
     private Fragment activityfragment;
+    private TextView nametext;
+    private Button accountbutton;
+    private Button cardbutton;
 
     private DataBaseHandler dataBaseHandler;
     private Spinner dropdown;
@@ -74,12 +80,15 @@ public void initUicomponents() {
     from = (Spinner) findViewById(R.id.fromspinner);
     to = (Spinner) findViewById(R.id.tospinner);
     listview = (ListView)findViewById(R.id.listview);
-    reverselist = Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getActivityList();
-    Collections.reverse(reverselist);
+    nametext = (TextView)findViewById(R.id.nametext);
+    accountbutton = (Button)findViewById(R.id.accountbutton);
+    cardbutton = (Button)findViewById(R.id.cardbutton);
+
+    nametext.setText(Bank.getInstance().getActiveuser().getName());
 
     adapt = new ArrayAdapter<Account>(this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getActiveuser().getAccountlist());
     actadapt = new ArrayAdapter<AccountActivity>(this, R.layout.support_simple_spinner_dropdown_item,
-            reverselist);
+            Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getActivityList());
     listview.setAdapter(actadapt);
     dropdown.setAdapter(adapt);
 
@@ -143,11 +152,27 @@ public void initFragments() {
 
 }
 public void updateAdapter() {
-        reverselist = Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getActivityList();
-        Collections.reverse(reverselist);
         actadapt = new ArrayAdapter<AccountActivity>(this, R.layout.support_simple_spinner_dropdown_item,
-                reverselist);
+                Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getActivityList());
         listview.setAdapter(actadapt);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

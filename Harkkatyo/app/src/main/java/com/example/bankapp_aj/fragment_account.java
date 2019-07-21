@@ -104,6 +104,7 @@ public class fragment_account extends Fragment {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 transferamount = i;
+                transfertext.setText(String.valueOf(transferamount) +"€");
 
 
             }
@@ -115,7 +116,7 @@ public class fragment_account extends Fragment {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                transfertext.setText(String.valueOf(transferamount) +"€");
+
             }
         });
 
