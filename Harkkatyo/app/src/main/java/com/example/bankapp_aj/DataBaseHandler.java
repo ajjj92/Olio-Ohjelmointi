@@ -80,29 +80,66 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
 
     public byte[] ObjecttoByte(User user) throws IOException {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ObjectOutputStream os = new ObjectOutputStream(out);
-        os.writeObject(user);
+        ByteArrayOutputStream out = null;
+        ObjectOutputStream os = null;
+
+        try{
+            out = new ByteArrayOutputStream();
+            os = new ObjectOutputStream(out);
+            Log.e("ObjectOutputStream", os.toString());
+            os.writeObject(user);
+            os.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(os != null) {
+                try {
+                    os.close();
+
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        Log.e("ObjecttoByte", "FINISHED");
         return out.toByteArray();
     }
     public User byteToObject(byte[] data) throws IOException, ClassNotFoundException {
-        ByteArrayInputStream in = new ByteArrayInputStream(data);
-        ObjectInputStream is = new ObjectInputStream(in);
-        while (true) {
+        ByteArrayInputStream in = null;
+        ObjectInputStream is = null;
+        Object o = null;
+
+
             try {
-                User user = (User) is.readObject();
-                return user;
+                in = new ByteArrayInputStream(data);
+                is = new ObjectInputStream(in);
+                Log.e("ObjectInputStream", is.toString());
+                while((o = is.readObject()) != null) {
+
+                    if(o instanceof User) {
+                        return  (User) o;
+                    }
+                }
+
 
             } catch (EOFException ex) {
-                is.close();
-                break;
+                ex.printStackTrace();
             } catch (NullPointerException e) {
                 e.printStackTrace();
             } catch (OptionalDataException e) {
                 e.printStackTrace();
 
+
+            }finally {
+                if(is != null) {
+                    try {
+                        is.close();
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-        }
+
             return null;
         }
 
@@ -169,6 +206,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             }
             cursor.moveToNext();
         }
+        cursor.close();
         database.close();
         return datastring;
     }
@@ -189,7 +227,27 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
+    public void testquery(String name, String pass) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String sql = "SELECT * FROM "+TABLE_NAME+" WHERE " + COLUMN_ID+ "='" + name + "' AND " + COLUMN_PASSWORD + "='" + pass+"'";
+        Cursor cursor = (Cursor) database.rawQuery(sql, null);
+        byte [] data = new byte[0];
+        cursor.moveToFirst();
+        Log.e("Cursor", String.valueOf(cursor.getColumnCount()));
+        Log.e("Cursor", cursor.getColumnName(3));
+        data = cursor.getBlob(3);
 
+        try {
+            User user = byteToObject(data);
+            cursor.close();
+            Bank.getInstance().setActiveuser(user);
+            database.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void deletedata() {
         String sql = "delete from "+ TABLE_NAME;

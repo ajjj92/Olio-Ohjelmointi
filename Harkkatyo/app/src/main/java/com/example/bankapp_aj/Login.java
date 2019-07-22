@@ -42,26 +42,20 @@ public class Login extends AppCompatActivity {
 
 
     public void login(View view) {
-            testname = username.getText().toString();
-            testpass = pass.getText().toString();
+        testname = username.getText().toString();
+        testpass = pass.getText().toString();
 
-        try {
-            user = dataBaseHandler.queryUserdata(testname, testpass);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+
+        dataBaseHandler.testquery(testname, testpass);
+
+        if (Bank.getInstance().getActiveuser() != null) {
+
+            openMainActivity();
+
+
         }
-        if(user != null) {
-
-                openMainActivity();
-            } else {
-                //wrong password
-            }
-
 
     }
-
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -88,4 +82,6 @@ public class Login extends AppCompatActivity {
     public void deletedata(View view) {
         dataBaseHandler.deletedata();
     }
+
+
 }
