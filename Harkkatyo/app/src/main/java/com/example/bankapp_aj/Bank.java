@@ -3,18 +3,19 @@ package com.example.bankapp_aj;
 import android.content.Context;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * 7/11/19
  * AtteJantunen
  */
-public class Bank {
+public class Bank implements Serializable {
     private static Bank bank;
-    private static ArrayList<User> userlist = new ArrayList<>();
+    private static ArrayList<User> userlist;
     private String name = "AJ_BANK";
-    private User activeuser=null;
-    private int activeuser_id=0;
+    private User activeuser;
+    private int activeuser_id;
 
     private Bank() {
 

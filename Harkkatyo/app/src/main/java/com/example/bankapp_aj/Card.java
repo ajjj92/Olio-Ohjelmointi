@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 7/11/19
  * AtteJantunen
  */
-public abstract class Card implements Serializable {
+public class Card implements Serializable {
     private String cardtype;
     private int paymentlimit;
     private int takelimit;
@@ -20,7 +20,7 @@ public abstract class Card implements Serializable {
 
 
 
-class CreditCard extends Card {
+class CreditCard extends Card implements Serializable{
     private int creditlimit;
 
     public CreditCard() {
@@ -29,7 +29,7 @@ class CreditCard extends Card {
 
 }
 
- class DebitCard extends Card {
+ class DebitCard extends Card implements Serializable{
     private int creditlimit;
     private Account linkedaccount;
     public DebitCard() {

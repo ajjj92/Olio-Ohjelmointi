@@ -14,7 +14,7 @@ public abstract class Account implements Serializable {
     protected double interest;
     protected String accounttype;
     private int luottoraja = 0;
-    protected ArrayList<AccountActivity> accountactivity = new ArrayList<>();
+    protected ArrayList<AccountActivity> accountactivity;
 
     public float getMoneyamount() {
         return this.moneyamount;
@@ -27,7 +27,14 @@ public abstract class Account implements Serializable {
     public void addMoney(float amount
     ) {
         this.moneyamount += amount;
-        this.accountactivity.add(new AccountActivity("","",amount));
+        if (accountactivity==null) {
+            accountactivity = new ArrayList<>();
+            this.accountactivity.add(new AccountActivity("","",amount));
+
+        } else {
+            this.accountactivity.add(new AccountActivity("","",amount));
+
+        }
     }
 
     public void takeMoney(float amount) {
@@ -48,7 +55,7 @@ public abstract class Account implements Serializable {
 
 
 
-    class SavingAccount extends Account {
+    class SavingAccount extends Account implements Serializable{
         private double savinginterest;
 
         public SavingAccount() {
@@ -64,7 +71,7 @@ public abstract class Account implements Serializable {
 
     }
 
-    class DailyAccount extends Account {
+    class DailyAccount extends Account implements Serializable{
 
         public DailyAccount() {
 

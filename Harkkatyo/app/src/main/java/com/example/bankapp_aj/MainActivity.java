@@ -95,6 +95,15 @@ public void initUicomponents() {
 
 
 }
+    @Override
+    protected void onRestart() {
+// TODO Auto-generated method stub
+        super.onRestart();
+        initUicomponents();
+        initFragments();
+        setOnclickListeners();
+
+    }
 
 public void setOnclickListeners() {
     dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

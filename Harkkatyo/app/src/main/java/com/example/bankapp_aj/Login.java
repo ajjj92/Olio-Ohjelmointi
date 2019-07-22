@@ -16,7 +16,7 @@ public class Login extends AppCompatActivity {
     private EditText username = null;
     private EditText pass = null;
     private DataBaseHandler dataBaseHandler;
-    private User user = null;
+    private User user;
     private Button button;
     private String testname;
     private String testpass;
@@ -74,7 +74,18 @@ public class Login extends AppCompatActivity {
         Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount());
         Bank.getInstance().getActiveuser().addAccountToUser(new SavingAccount());
         dataBaseHandler.addData(user);
+        dataBaseHandler.close();
+        User user2 = new User("ad", "ad");
+        Bank.getInstance().setActiveuser(user2);
+        Bank.getInstance().getActiveuser().setAddress("testikatu 12");
+        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount());
+        Bank.getInstance().getActiveuser().addAccountToUser(new SavingAccount());
+        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount());
+        Bank.getInstance().getActiveuser().addAccountToUser(new SavingAccount());
+        dataBaseHandler.addData(user2);
+        dataBaseHandler.close();
     }
-
-
+    public void deletedata(View view) {
+        dataBaseHandler.deletedata();
+    }
 }

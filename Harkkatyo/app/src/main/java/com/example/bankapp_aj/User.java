@@ -26,8 +26,7 @@ public class User implements Serializable {
     public User(String name, String password) {
         this.name = name;
         this.password = password;
-        this.cardlist = new ArrayList<>();
-        this.accountlist = new ArrayList<>();
+
     }
 
 
@@ -43,10 +42,22 @@ public class User implements Serializable {
     }
 
     public void addAccountToUser(Account account) {
-        this.accountlist.add(account);
+        if (accountlist == null) {
+            accountlist = new ArrayList<>();
+            this.accountlist.add(account);
+        }else{
+            this.accountlist.add(account);
+        }
+
     }
     public void addCardToUser(Card card) {
-        this.cardlist.add(card);
+
+        if (cardlist == null) {
+            cardlist = new ArrayList<>();
+            this.cardlist.add(card);
+        }else{
+            this.cardlist.add(card);
+        }
     }
 
     public String getName() {
@@ -56,12 +67,10 @@ public class User implements Serializable {
         return this.address;
     }
     public ArrayList<Account> getAccountlist() {
-        if (accountlist.isEmpty()) {
-            return null;
-        } else {
+
             return this.accountlist;
 
-        }
+
     }
     public String getPassword() {
         return this.password;

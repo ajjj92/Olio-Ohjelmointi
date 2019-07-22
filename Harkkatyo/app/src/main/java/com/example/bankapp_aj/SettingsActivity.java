@@ -1,5 +1,7 @@
 package com.example.bankapp_aj;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -64,22 +66,26 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
 public void setChanges() throws IOException {
+    String oldname = Bank.getInstance().getActiveuser().getName();
 
 
-        String oldname = Bank.getInstance().getActiveuser().getName();
-        Bank.getInstance().getActiveuser().setName(name.getText().toString());
-        Bank.getInstance().getActiveuser().setPassword(pass.getText().toString());
-        Bank.getInstance().getActiveuser().setAddress(address.getText().toString());
+    Bank.getInstance().getActiveuser().setName(name.getText().toString());
+    Bank.getInstance().getActiveuser().setPassword(pass.getText().toString());
+    Bank.getInstance().getActiveuser().setAddress(address.getText().toString());
+
+
+    DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
+    dataBaseHandler.addData(new User(Bank.getInstance().getActiveuser().getName(),
+            Bank.getInstance().getActiveuser().getPassword(),
+            Bank.getInstance().getActiveuser().getAccountlist(),
+            Bank.getInstance().getActiveuser().getCardlist()));
+
+    name.setText(Bank.getInstance().getActiveuser().getName());
+    pass.setText(Bank.getInstance().getActiveuser().getPassword());
+    address.setText(Bank.getInstance().getActiveuser().getAddress());
 
 
 
-
-
-        name.setText(Bank.getInstance().getActiveuser().getName());
-        pass.setText(Bank.getInstance().getActiveuser().getPassword());
-        address.setText(Bank.getInstance().getActiveuser().getAddress());
-        DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
-        dataBaseHandler.updateUserdata(oldname);
 }
 public void getData(View view) {
     DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
