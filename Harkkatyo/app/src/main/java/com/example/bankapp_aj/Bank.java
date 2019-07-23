@@ -40,7 +40,13 @@ public class Bank implements Serializable {
     }
 
     public void setActiveuser(User user ) {
-        this.activeuser = user;
+        if (this.activeuser != null) {
+            this.activeuser = user;
+
+        } else {
+            this.activeuser = new User();
+            this.activeuser = user;
+        }
     }
     public void setActiveuser_id(int i) {
         this.activeuser_id = i;

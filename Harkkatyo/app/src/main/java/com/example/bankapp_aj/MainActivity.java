@@ -129,10 +129,7 @@ public void setOnclickListeners() {
         public void onClick(View view) {
 
             if (view == transferbutton){
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragmentwindow, transferfragmnet);
-                transaction.commit();
+                openTransferActivity();
 
 
 
@@ -182,6 +179,28 @@ public void updateAdapter() {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void setChanges(View view) throws IOException {
+
+
+        String oldname = Bank.getInstance().getActiveuser().getName();
+        Bank.getInstance().getActiveuser().setName("ade");
+        Bank.getInstance().getActiveuser().setPassword("ade");
+        Bank.getInstance().getActiveuser().setAddress("ade");
+
+
+
+
+
+        DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
+        dataBaseHandler.updateUserdata(oldname);
+    }
+
+    public void openTransferActivity() {
+        Intent intent = new Intent(this, TransferActivity.class);
+        startActivity(intent);
     }
 
 }

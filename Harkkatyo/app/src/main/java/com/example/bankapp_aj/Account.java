@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public abstract class Account implements Serializable {
     protected String id;
     protected float moneyamount;
-    protected double interest;
+    protected int interest;
     protected String accounttype;
     private int luottoraja = 0;
     protected ArrayList<AccountActivity> accountactivity;

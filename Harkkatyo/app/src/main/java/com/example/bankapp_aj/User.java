@@ -11,11 +11,19 @@ public class User implements Serializable {
     private String name;
     private String address;
     private String password;
+    private String namecopy;
+    private String addresscopy;
+    private String passwordcopy;
     private ArrayList<Account> accountlist;
     private ArrayList<Card> cardlist;
-    private static final long serialVersionUID = 4L;
+    private User copy;
 
 
+
+    public User() {
+
+
+    }
     public User(String name, String password, ArrayList<Account> accountlist, ArrayList<Card> cardlist) {
         this.name = name;
         this.password = password;
@@ -30,7 +38,7 @@ public class User implements Serializable {
     }
 
 
-    public void transferMoney(int from, int to, float transferamount) {
+    public void transferMoney(int from, int to, int transferamount) {
         if (from != to) {
             if (transferamount <= this.accountlist.get(from).getMoneyamount()) {
                 this.accountlist.get(from).takeMoney(transferamount);

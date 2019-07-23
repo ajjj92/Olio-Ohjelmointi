@@ -15,7 +15,7 @@ public class AccountActivity implements Serializable {
     private float moneyamount=0;
     private int code;
     private String date="";
-    private SimpleDateFormat formatter = new SimpleDateFormat("d-M-yyyy HH:mm");
+    private transient SimpleDateFormat formatter = new SimpleDateFormat("d-M-yyyy HH:mm");
 
 
     public AccountActivity(String payee, String receiver, float moneyamount) {

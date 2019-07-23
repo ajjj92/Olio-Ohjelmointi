@@ -1,9 +1,9 @@
 package com.example.bankapp_aj;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,18 +11,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-
-/**
- * 7/16/19
- * AtteJantunen
- */
-public class fragment_account extends Fragment {
-
+public class TransferActivity extends AppCompatActivity {
 
     private Spinner to;
     private Spinner from;
@@ -36,37 +25,26 @@ public class fragment_account extends Fragment {
     private TextView transfertext;
     private int transferamount;
 
-
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_account, container, false);
-
-
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_transfer);
         setTextViews();
         initCompontents();
-
-
-
 
     }
 
 
 
     public void initCompontents() {
-        from = (Spinner) getActivity().findViewById(R.id.fromspinner);
-        to = (Spinner) getActivity().findViewById(R.id.tospinner);
-        seekbar = (SeekBar) getActivity().findViewById(R.id.seekBar);
-        acceptbutton = (Button) getActivity().findViewById(R.id.acceptbutton);
-        transfertext = (TextView) getActivity().findViewById(R.id.transfertext);
-        adapt2 = new ArrayAdapter<Account>(getActivity(), R.layout.support_simple_spinner_dropdown_item, Bank.getInstance().getActiveuser().getAccountlist());
+
+
+        from = (Spinner) findViewById(R.id.fromspinner);
+        to = (Spinner) findViewById(R.id.tospinner);
+        seekbar = (SeekBar) findViewById(R.id.seekBar);
+        acceptbutton = (Button) findViewById(R.id.acceptbutton);
+        transfertext = (TextView) findViewById(R.id.transfertext);
+        adapt2 = new ArrayAdapter<Account>(this, R.layout.support_simple_spinner_dropdown_item, Bank.getInstance().getActiveuser().getAccountlist());
         from.setAdapter(adapt2);
         to.setAdapter(adapt2);
         from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -120,26 +98,24 @@ public class fragment_account extends Fragment {
             }
         });
 
-       acceptbutton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               acceptTransfer(fromget,toget,transferamount);
-               adapt2.notifyDataSetChanged();
-               tomoney.setText(String.valueOf(Bank.getInstance().getActiveuser().getAccountlist().get(toget).getMoneyamount())+"€");
-               frommoney.setText(String.valueOf(Bank.getInstance().getActiveuser().getAccountlist().get(fromget).getMoneyamount())+"€");
-               seekbar.setProgress(0);
-               transfertext.setText(String.valueOf(0)+"€");
-               ((MainActivity)getActivity()).notifyChange();
-               ((MainActivity)getActivity()).updateAdapter();
+        acceptbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                acceptTransfer(fromget,toget,transferamount);
+                adapt2.notifyDataSetChanged();
+                tomoney.setText(String.valueOf(Bank.getInstance().getActiveuser().getAccountlist().get(toget).getMoneyamount())+"€");
+                frommoney.setText(String.valueOf(Bank.getInstance().getActiveuser().getAccountlist().get(fromget).getMoneyamount())+"€");
+                seekbar.setProgress(0);
+                transfertext.setText(String.valueOf(0)+"€");
 
-           }
-       });
+            }
+        });
 
     }
 
     public void setTextViews() {
-        frommoney = getActivity().findViewById(R.id.frommoney);
-        tomoney = getActivity().findViewById(R.id.tomoney);
+        frommoney = findViewById(R.id.frommoney);
+        tomoney = findViewById(R.id.tomoney);
     }
 
     public void acceptTransfer(int fromget, int toget, int transferamount) {
@@ -147,6 +123,6 @@ public class fragment_account extends Fragment {
             Bank.getInstance().getActiveuser().transferMoney(fromget, toget, transferamount);
 
         }
-        }
+    }
 
 }
