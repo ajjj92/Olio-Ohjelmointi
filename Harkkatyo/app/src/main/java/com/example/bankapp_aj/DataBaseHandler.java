@@ -3,6 +3,7 @@ package com.example.bankapp_aj;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -235,9 +236,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         Log.e("Cursor", String.valueOf(cursor.getColumnCount()));
         Log.e("Cursor", cursor.getColumnName(3));
-        data = cursor.getBlob(3);
+
 
         try {
+            data = cursor.getBlob(3);
             User user = byteToObject(data);
             cursor.close();
             Bank.getInstance().setActiveuser(user);
@@ -245,6 +247,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (CursorIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
     }

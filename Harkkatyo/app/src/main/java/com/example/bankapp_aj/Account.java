@@ -3,6 +3,7 @@ package com.example.bankapp_aj;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * 7/11/19
@@ -10,10 +11,9 @@ import java.util.ArrayList;
  */
 public abstract class Account implements Serializable {
     protected String id;
-    protected float moneyamount;
+    protected float moneyamount=0;
     protected int interest;
     protected String accounttype;
-    private int luottoraja = 0;
     protected ArrayList<AccountActivity> accountactivity;
 
     public float getMoneyamount() {
@@ -56,12 +56,19 @@ public abstract class Account implements Serializable {
 
 
     class SavingAccount extends Account implements Serializable{
-        private double savinginterest;
 
-        public SavingAccount() {
-
-            this.id = "FI12 1234 1234 99";
-            this.addMoney(12000);
+        public SavingAccount(float moneyamount) {
+            Random rand = new Random();
+            String acc = "SA";
+            for (int i = 0; i<14; i++) {
+                int randnumber = rand.nextInt(10);
+                acc += Integer.toString(randnumber);
+                if( i % 4==0) {
+                    acc +=" ";
+                }
+            }
+            this.id = acc;
+            this.addMoney(moneyamount);
         }
 
         @Override
@@ -73,10 +80,18 @@ public abstract class Account implements Serializable {
 
     class DailyAccount extends Account implements Serializable{
 
-        public DailyAccount() {
-
-            this.id = "FI21 4321 4321 4321 90";
-            this.addMoney(8000);
+        public DailyAccount(float moneyamount) {
+            Random rand = new Random();
+            String acc = "DA";
+            for (int i = 0; i<14; i++) {
+                int randnumber = rand.nextInt(10);
+                acc += Integer.toString(randnumber);
+                if( i % 4==0) {
+                    acc +=" ";
+                }
+            }
+            this.id = acc;
+            this.addMoney(moneyamount);
 
 
 

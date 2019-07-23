@@ -140,6 +140,10 @@ public void setOnclickListeners() {
                 transaction.replace(R.id.fragmentwindow, paymentfragment);
                 transaction.commit();
 
+            } if(view == cardbutton) {
+                openCardsActivity();
+            }if(view == accountbutton) {
+                openAccountsActivity();
             }
 
 
@@ -148,6 +152,8 @@ public void setOnclickListeners() {
     };
     transferbutton.setOnClickListener(listener);
     paymentbutton.setOnClickListener(listener);
+    cardbutton.setOnClickListener(listener);
+    accountbutton.setOnClickListener(listener);
 }
 
 public void initFragments() {
@@ -200,6 +206,14 @@ public void updateAdapter() {
 
     public void openTransferActivity() {
         Intent intent = new Intent(this, TransferActivity.class);
+        startActivity(intent);
+    }
+    public void openAccountsActivity() {
+        Intent intent = new Intent(this, AccountsActivity.class);
+        startActivity(intent);
+    }
+    public void openCardsActivity() {
+        Intent intent = new Intent(this, CardsActivity.class);
         startActivity(intent);
     }
 
