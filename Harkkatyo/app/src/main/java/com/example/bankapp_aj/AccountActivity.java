@@ -1,7 +1,14 @@
 package com.example.bankapp_aj;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -15,16 +22,17 @@ public class AccountActivity implements Serializable {
     private float moneyamount=0;
     private int code;
     private String date="";
-    private transient SimpleDateFormat formatter = new SimpleDateFormat("d-M-yyyy HH:mm");
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public AccountActivity(String payee, String receiver, float moneyamount) {
+        DateFormat df = new SimpleDateFormat("d-M-yyyy HH:mm");
+        Date dateobj = new Date();
 
         this.payee = payee;
         this.receiver = receiver;
         this.moneyamount = moneyamount;
-
-        this.date = formatter.format(new Date(System.currentTimeMillis()));
+        this.date = df.format(dateobj);
 
 
     }
