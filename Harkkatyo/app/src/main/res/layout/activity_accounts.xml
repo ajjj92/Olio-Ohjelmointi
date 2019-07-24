@@ -8,7 +8,7 @@
     tools:context=".AccountsActivity">
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/cardlistview"
         android:layout_width="390dp"
         android:layout_height="244dp"
         android:layout_marginStart="8dp"
@@ -29,6 +29,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="add saving account"
+        android:background="@drawable/border_full"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/depositamount" />
 
@@ -40,6 +41,7 @@
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
         android:text="add daily account"
+        android:background="@drawable/border_full"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/depositamount" />
 
@@ -72,6 +74,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listview" />
+        app:layout_constraintTop_toBottomOf="@+id/cardlistview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

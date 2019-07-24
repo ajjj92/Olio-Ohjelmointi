@@ -1,13 +1,8 @@
 package com.example.bankapp_aj;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,25 +16,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
-    private Bank controller;
     private int activedropitem = 0;
     private TextView moneyText;
     private TextView frommoney;
     private TextView tomoney;
     private ArrayAdapter<Account> adapt;
     private ArrayAdapter<AccountActivity> actadapt;
-    private Fragment transferfragmnet;
-    private Fragment paymentfragment;
-    private Fragment activityfragment;
+
     private TextView nametext;
     private Button accountbutton;
     private Button cardbutton;
 
-    private DataBaseHandler dataBaseHandler;
     private Spinner dropdown;
     private boolean isadmin;
     private Button transferbutton;
@@ -54,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initUicomponents();
-        initFragments();
         setOnclickListeners();
 
 
@@ -79,18 +67,19 @@ public void initUicomponents() {
     dropdown = (Spinner) findViewById(R.id.spinner);
     from = (Spinner) findViewById(R.id.fromspinner);
     to = (Spinner) findViewById(R.id.tospinner);
-    listview = (ListView)findViewById(R.id.listview);
+    listview = (ListView)findViewById(R.id.cardlistview);
     nametext = (TextView)findViewById(R.id.nametext);
     accountbutton = (Button)findViewById(R.id.accountbutton);
     cardbutton = (Button)findViewById(R.id.cardbutton);
 
-    nametext.setText(Bank.getInstance().getActiveuser().getName());
+
 
     adapt = new ArrayAdapter<Account>(this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getActiveuser().getAccountlist());
     actadapt = new ArrayAdapter<AccountActivity>(this, R.layout.support_simple_spinner_dropdown_item,
             Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getActivityList());
     listview.setAdapter(actadapt);
     dropdown.setAdapter(adapt);
+    nametext.setText(Bank.getInstance().getActiveuser().getName());
 
 
 
@@ -100,7 +89,6 @@ public void initUicomponents() {
 // TODO Auto-generated method stub
         super.onRestart();
         initUicomponents();
-        initFragments();
         setOnclickListeners();
 
     }
@@ -134,13 +122,7 @@ public void setOnclickListeners() {
 
 
             }
-            if(view == paymentbutton) {
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragmentwindow, paymentfragment);
-                transaction.commit();
-
-            } if(view == cardbutton) {
+            if(view == cardbutton) {
                 openCardsActivity();
             }if(view == accountbutton) {
                 openAccountsActivity();
@@ -156,13 +138,7 @@ public void setOnclickListeners() {
     accountbutton.setOnClickListener(listener);
 }
 
-public void initFragments() {
-    transferfragmnet =new fragment_account();
-    paymentfragment = new fragment_payment();
 
-
-
-}
 public void updateAdapter() {
         actadapt = new ArrayAdapter<AccountActivity>(this, R.layout.support_simple_spinner_dropdown_item,
                 Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getActivityList());

@@ -15,10 +15,16 @@ public abstract class Account implements Serializable {
     protected int interest;
     protected String accounttype;
     protected ArrayList<AccountActivity> accountactivity;
+    protected ArrayList<Card> cardlist;
 
     public float getMoneyamount() {
         return this.moneyamount;
     }
+
+    public void addCardtoAccount(Card card) {
+
+            this.cardlist.add(card);
+        }
 
     public String getId() {
         return this.id;
@@ -27,14 +33,15 @@ public abstract class Account implements Serializable {
     public void addMoney(float amount
     ) {
         this.moneyamount += amount;
-        if (accountactivity==null) {
-            accountactivity = new ArrayList<>();
-            this.accountactivity.add(new AccountActivity("","",amount));
 
-        } else {
             this.accountactivity.add(new AccountActivity("","",amount));
 
         }
+
+
+
+    public ArrayList<Card> getCardlist() {
+        return this.cardlist;
     }
 
     public void takeMoney(float amount) {
@@ -58,6 +65,8 @@ public abstract class Account implements Serializable {
     class SavingAccount extends Account implements Serializable{
 
         public SavingAccount(float moneyamount) {
+            this.cardlist = new ArrayList<>();
+            this.accountactivity = new ArrayList<>();
             Random rand = new Random();
             String acc = "SA";
             for (int i = 0; i<14; i++) {
@@ -81,6 +90,8 @@ public abstract class Account implements Serializable {
     class DailyAccount extends Account implements Serializable{
 
         public DailyAccount(float moneyamount) {
+            this.cardlist = new ArrayList<>();
+            this.accountactivity = new ArrayList<>();
             Random rand = new Random();
             String acc = "DA";
             for (int i = 0; i<14; i++) {

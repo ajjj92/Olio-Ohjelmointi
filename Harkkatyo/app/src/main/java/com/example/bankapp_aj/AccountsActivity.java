@@ -1,8 +1,6 @@
 package com.example.bankapp_aj;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +24,7 @@ public class AccountsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
-        accountlistview = (ListView)findViewById(R.id.listview);
+        accountlistview = (ListView)findViewById(R.id.cardlistview);
         depositamount = (EditText) findViewById(R.id.depositamount);
         addnewdaily = (Button) findViewById(R.id.addnewdaily);
         addnewsaving= (Button) findViewById(R.id.addnewsaving);
