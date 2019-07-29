@@ -42,10 +42,10 @@ public class AccountActivity implements Serializable {
     @Override
     public String toString() {
         if (moneyamount>0) {
-            String activityString = String.format("%s  %s   +%.2f€",date, receiver, moneyamount);
+            String activityString = String.format("%s  %s -> %s   +%.2f€",this.date, this.payee, this.receiver, this.moneyamount);
             return  activityString;
         }
-        String activityString = String.format("%s  %s   %.2f€",date, receiver, moneyamount);
+        String activityString = String.format("%s  %s -> %s   %.2f€",this.date, this.payee, this.receiver, this.moneyamount);
         return  activityString;
     }
 }

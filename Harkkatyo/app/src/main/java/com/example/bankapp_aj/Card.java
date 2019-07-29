@@ -12,11 +12,16 @@ public class Card implements Serializable {
     protected int paymentlimit;
     protected Account linkedaccount;
     protected String code;
+    protected  int creditlimit;
 
     public Card() {
         //do stuff
 
     }
+    public int getCreditlimit() {
+        return this.creditlimit;
+    }
+
 
     public Account getLinkedaccount() {
         return this.linkedaccount;
@@ -42,7 +47,6 @@ public class Card implements Serializable {
 
 
 class CreditCard extends Card implements Serializable {
-    private int creditlimit;
 
     public CreditCard(Account linkedaccount, int creditlimit) {
         //do stuff
@@ -63,9 +67,6 @@ class CreditCard extends Card implements Serializable {
 
 
 
-    public int getCreditlimit() {
-        return this.creditlimit;
-    }
 
     @Override
     public String toString() {
@@ -77,7 +78,7 @@ class CreditCard extends Card implements Serializable {
 
         public DebitCard(Account linkedaccount) {
             this.linkedaccount = linkedaccount;
-
+            this.creditlimit = 0;
             this.cardtype = "Debitcard";
 
             Random rand = new Random();

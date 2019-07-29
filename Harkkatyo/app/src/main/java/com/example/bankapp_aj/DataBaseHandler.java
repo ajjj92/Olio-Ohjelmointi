@@ -68,7 +68,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         contentValues.put(COLUMN_USERBYTES, userinbytes);
         long result = database.insert(TABLE_NAME, null, contentValues);
         Log.e("DATABASE OPERATION", "Database data added.....");
-        database.close();
         //returns -1 if incorrect
         if(result == -1) {
             return false;
@@ -162,7 +161,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
                     Bank.getInstance().setActiveuser_id(cursor.getColumnIndex("_id"));
                     Bank.getInstance().setActiveuser(user);
-                    database.close();
                     return  user;
 
 
@@ -171,26 +169,24 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
             cursor.moveToNext();
         }
-        database.close();
         cursor.close();
         return null;
     }
 
-    public int updateUserdata(String oldname) throws IOException {
+    public int updateUserdata(String oldname, User userdata) throws IOException {
         String[] whereArgs = {oldname};
         SQLiteDatabase database = this.getWritableDatabase();
-        User user = Bank.getInstance().getActiveuser();
+        User user = userdata;
         byte [] data = new byte[0];
 
         data = ObjecttoByte(user);
         ContentValues cv = new ContentValues();
-        cv.put(COLUMN_ID, Bank.getInstance().getActiveuser().getName());
-        cv.put(COLUMN_PASSWORD, Bank.getInstance().getActiveuser().getPassword());
+        cv.put(COLUMN_ID, user.getName());
+        cv.put(COLUMN_PASSWORD, user.getPassword());
         cv.put(COLUMN_USERBYTES, data);
         int i = database.update("userdata", cv, "username" + " = ?", whereArgs);
         Log.e("DATABASE OPERATION", "Database updated");
         //returns -1 if incorrect
-        database.close();
         return i;
     }
 
@@ -208,7 +204,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         cursor.close();
-        database.close();
         return datastring;
     }
     public byte[] makeUserObjecttoBytes(User user) {
@@ -241,9 +236,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         try {
             data = cursor.getBlob(3);
             User user = byteToObject(data);
-            cursor.close();
             Bank.getInstance().setActiveuser(user);
-            database.close();
+            cursor.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -253,11 +247,36 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
     }
 
+    public void queryNopass(String name) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String sql = "SELECT * FROM "+TABLE_NAME+" WHERE " + COLUMN_ID+ "='" + name + "'";
+        Cursor cursor = (Cursor) database.rawQuery(sql, null);
+        byte [] data = new byte[0];
+        cursor.moveToFirst();
+        Log.e("Cursor", String.valueOf(cursor.getColumnCount()));
+        Log.e("Cursor", cursor.getColumnName(3));
+
+
+        try {
+            data = cursor.getBlob(3);
+            User user = byteToObject(data);
+            cursor.close();
+            Bank.getInstance().setTempuser(user);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (CursorIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void deletedata() {
         String sql = "delete from "+ TABLE_NAME;
         SQLiteDatabase database = this.getReadableDatabase();
         database.execSQL(sql);
-        database.close();
         Log.e("DATABASE OPERATION", "Database deleted");
 
     }

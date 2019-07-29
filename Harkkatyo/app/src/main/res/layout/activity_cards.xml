@@ -7,20 +7,20 @@
     tools:context=".CardsActivity">
 
 
-    <ListView
+    <Spinner
         android:id="@+id/cardlistview"
-        android:layout_width="397dp"
-        android:layout_height="195dp"
+        android:layout_width="393dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/border_full"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountbutton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/debitbutton"
@@ -29,8 +29,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:text="add debit card"
         android:background="@drawable/rounded_button"
+        android:text="add debit card"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linkedaccount" />
 
@@ -41,8 +41,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="add credit card"
         android:background="@drawable/rounded_button"
+        android:text="add credit card"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linkedaccount" />
 
@@ -77,6 +77,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardlistview" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="104dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Money amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/debitbutton" />
+
     <Spinner
         android:id="@+id/linkedaccount"
         android:layout_width="322dp"
@@ -89,5 +104,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/creditlimit" />
+
+    <Button
+        android:id="@+id/withbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="104dp"
+        android:text="Withdraw"
+        android:background="@drawable/rounded_button"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/debitbutton" />
+
+    <Button
+        android:id="@+id/depbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Deposit"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded_button"
+
+        app:layout_constraintTop_toBottomOf="@+id/creditbutton" />
+
+    <EditText
+        android:id="@+id/withmoneyamount"
+        android:layout_width="159dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/depbutton"
+        app:layout_constraintStart_toEndOf="@+id/withbutton"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

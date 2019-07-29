@@ -126,6 +126,8 @@ public void setOnclickListeners() {
                 openCardsActivity();
             }if(view == accountbutton) {
                 openAccountsActivity();
+            }if(view == paymentbutton) {
+                openPaymentActivity();
             }
 
 
@@ -177,7 +179,7 @@ public void updateAdapter() {
 
 
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
-        dataBaseHandler.updateUserdata(oldname);
+        dataBaseHandler.updateUserdata(oldname, Bank.getInstance().getActiveuser());
     }
 
     public void openTransferActivity() {
@@ -190,6 +192,11 @@ public void updateAdapter() {
     }
     public void openCardsActivity() {
         Intent intent = new Intent(this, CardsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openPaymentActivity() {
+        Intent intent = new Intent(this, PaymentActivity.class);
         startActivity(intent);
     }
 

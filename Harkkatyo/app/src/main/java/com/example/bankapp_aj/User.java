@@ -1,5 +1,9 @@
 package com.example.bankapp_aj;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -14,8 +18,8 @@ public class User implements Serializable {
     private String namecopy;
     private String addresscopy;
     private String passwordcopy;
-    private ArrayList<Account> accountlist;
-    private ArrayList<Card> cardlist;
+    private ArrayList<Account> accountlist = new ArrayList<>();
+    private ArrayList<Card> cardlist = new ArrayList<>();
     private User copy;
 
 
@@ -38,6 +42,7 @@ public class User implements Serializable {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void transferMoney(int from, int to, int transferamount) {
         if (from != to) {
             if (transferamount <= this.accountlist.get(from).getMoneyamount()) {
@@ -50,22 +55,14 @@ public class User implements Serializable {
     }
 
     public void addAccountToUser(Account account) {
-        if (accountlist == null) {
-            accountlist = new ArrayList<>();
-            this.accountlist.add(account);
-        }else{
+
             this.accountlist.add(account);
         }
 
-    }
+
     public void addCardToUser(Card card) {
 
-        if (cardlist == null) {
-            cardlist = new ArrayList<>();
-            this.cardlist.add(card);
-        }else{
-            this.cardlist.add(card);
-        }
+        this.cardlist.add(card);
     }
 
     public String getName() {

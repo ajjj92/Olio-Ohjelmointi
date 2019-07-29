@@ -29,7 +29,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:text="add saving account"
-        android:background="@drawable/border_full"
+        android:background="@drawable/rounded_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/depositamount" />
 
@@ -41,7 +41,7 @@
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
         android:text="add daily account"
-        android:background="@drawable/border_full"
+        android:background="@drawable/rounded_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/depositamount" />
 

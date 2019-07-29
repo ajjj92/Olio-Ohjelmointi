@@ -1,9 +1,11 @@
 package com.example.bankapp_aj;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,11 +28,12 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         username = (EditText) findViewById(R.id.editText2);
         pass = (EditText) findViewById(R.id.editText);
-        dataBaseHandler = new DataBaseHandler(this);
         button = (Button) findViewById(R.id.button4);
 
+        dataBaseHandler = new DataBaseHandler(this);
 
         button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 test();
@@ -60,12 +63,18 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void test() {
-        User user = new User("admin", "admin");
+
+        User user = new User ("atte", "atte");
         Bank.getInstance().setActiveuser(user);
-        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount(100));
+        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount(200));
         dataBaseHandler.addData(user);
-        dataBaseHandler.close();
+
+        User user2 = new User ("admin", "admin");
+        Bank.getInstance().setActiveuser(user2);
+        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount(2000));
+        dataBaseHandler.addData(user2);
 
     }
     public void deletedata(View view) {

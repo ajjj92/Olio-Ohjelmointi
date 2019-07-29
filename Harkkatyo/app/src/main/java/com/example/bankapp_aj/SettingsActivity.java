@@ -75,7 +75,7 @@ public void setChanges() throws IOException {
 
 
     DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
-    dataBaseHandler.updateUserdata(oldname);
+    dataBaseHandler.updateUserdata(oldname, Bank.getInstance().getActiveuser());
 
     name.setText(Bank.getInstance().getActiveuser().getName());
     pass.setText(Bank.getInstance().getActiveuser().getPassword());

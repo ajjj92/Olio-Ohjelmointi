@@ -1,7 +1,9 @@
 package com.example.bankapp_aj;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -33,6 +35,7 @@ public class AccountsActivity extends AppCompatActivity {
         accountlistview.setAdapter(adaptlist);
 
         View.OnClickListener listener = new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
 
@@ -43,7 +46,7 @@ public class AccountsActivity extends AppCompatActivity {
                         adaptlist.notifyDataSetChanged();
                         DataBaseHandler dataBaseHandler = new DataBaseHandler(AccountsActivity.this);
                         try {
-                            dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName());
+                            dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName(),Bank.getInstance().getActiveuser());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -60,7 +63,7 @@ public class AccountsActivity extends AppCompatActivity {
                         adaptlist.notifyDataSetChanged();
                         DataBaseHandler dataBaseHandler = new DataBaseHandler(AccountsActivity.this);
                         try {
-                            dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName());
+                            dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName(),Bank.getInstance().getActiveuser());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

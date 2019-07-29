@@ -12,9 +12,10 @@ import java.util.ArrayList;
  */
 public class Bank implements Serializable {
     private static Bank bank;
-    private static ArrayList<User> userlist;
+    private static ArrayList<User> userlist = new ArrayList<>();
     private String name = "AJ_BANK";
-    private User activeuser;
+    private User activeuser=null;
+    private User tempuser=null;
     private int activeuser_id;
 
     private Bank() {
@@ -30,9 +31,13 @@ public class Bank implements Serializable {
         return bank;
     }
 
-    public void createUser(String name, String password) {
+    public void createUser(String name, String password, Context context) {
         User user = new User(name, password);
-        userlist.add(user);
+        DataBaseHandler dataBaseHandler = new DataBaseHandler(context);
+        dataBaseHandler.addData(user);
+        dataBaseHandler.close();
+
+        this.userlist.add(user);
     }
 
     public User getActiveuser() {
@@ -40,13 +45,7 @@ public class Bank implements Serializable {
     }
 
     public void setActiveuser(User user ) {
-        if (this.activeuser != null) {
-            this.activeuser = user;
-
-        } else {
-            this.activeuser = new User();
-            this.activeuser = user;
-        }
+        this.activeuser = user;
     }
     public void setActiveuser_id(int i) {
         this.activeuser_id = i;
@@ -62,9 +61,15 @@ public class Bank implements Serializable {
 
 
 
-    public ArrayList<User> Bank_getUserlist() {
+    public ArrayList<User> getUserlist() {
         return userlist;
     }
 
+    public User getTempuser() {
+        return this.tempuser;
+    }
 
+    public void setTempuser(User user ) {
+        this.tempuser = user;
+    }
 }
