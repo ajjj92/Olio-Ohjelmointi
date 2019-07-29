@@ -8,7 +8,7 @@
     tools:context=".AccountsActivity">
 
     <ListView
-        android:id="@+id/cardlistview"
+        android:id="@+id/activitylistview"
         android:layout_width="390dp"
         android:layout_height="244dp"
         android:layout_marginStart="8dp"
@@ -74,6 +74,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardlistview" />
+        app:layout_constraintTop_toBottomOf="@+id/activitylistview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

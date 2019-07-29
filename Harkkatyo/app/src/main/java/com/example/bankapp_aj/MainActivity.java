@@ -15,8 +15,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.io.IOException;
-
 public class MainActivity extends AppCompatActivity {
     private int activedropitem = 0;
     private TextView moneyText;
@@ -30,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     private Button cardbutton;
 
     private Spinner dropdown;
-    private boolean isadmin;
     private Button transferbutton;
     private Button paymentbutton;
     private Spinner from;
@@ -58,6 +55,7 @@ public void notifyChange() {
 public int getActivedropitem() {
         return this.activedropitem;
 }
+
 public void initUicomponents() {
     frommoney = (TextView)findViewById(R.id.frommoney);
     tomoney = (TextView)findViewById(R.id.tomoney);
@@ -67,7 +65,7 @@ public void initUicomponents() {
     dropdown = (Spinner) findViewById(R.id.spinner);
     from = (Spinner) findViewById(R.id.fromspinner);
     to = (Spinner) findViewById(R.id.tospinner);
-    listview = (ListView)findViewById(R.id.cardlistview);
+    listview = (ListView)findViewById(R.id.activitylistview);
     nametext = (TextView)findViewById(R.id.nametext);
     accountbutton = (Button)findViewById(R.id.accountbutton);
     cardbutton = (Button)findViewById(R.id.cardbutton);
@@ -82,8 +80,11 @@ public void initUicomponents() {
     nametext.setText(Bank.getInstance().getActiveuser().getName());
 
 
+    }
 
-}
+
+
+
     @Override
     protected void onRestart() {
 // TODO Auto-generated method stub
@@ -94,6 +95,17 @@ public void initUicomponents() {
     }
 
 public void setOnclickListeners() {
+
+
+    if (Bank.getInstance().getAdminstatus()) {
+        nametext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdminActivity();
+            }
+        });
+    }
+
     dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -134,10 +146,14 @@ public void setOnclickListeners() {
 
         }
     };
+
+
+
     transferbutton.setOnClickListener(listener);
     paymentbutton.setOnClickListener(listener);
     cardbutton.setOnClickListener(listener);
     accountbutton.setOnClickListener(listener);
+
 }
 
 
@@ -166,21 +182,6 @@ public void updateAdapter() {
     }
 
 
-    public void setChanges(View view) throws IOException {
-
-
-        String oldname = Bank.getInstance().getActiveuser().getName();
-        Bank.getInstance().getActiveuser().setName("ade");
-        Bank.getInstance().getActiveuser().setPassword("ade");
-        Bank.getInstance().getActiveuser().setAddress("ade");
-
-
-
-
-
-        DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
-        dataBaseHandler.updateUserdata(oldname, Bank.getInstance().getActiveuser());
-    }
 
     public void openTransferActivity() {
         Intent intent = new Intent(this, TransferActivity.class);
@@ -197,6 +198,10 @@ public void updateAdapter() {
 
     public void openPaymentActivity() {
         Intent intent = new Intent(this, PaymentActivity.class);
+        startActivity(intent);
+    }
+    public void openAdminActivity() {
+        Intent intent = new Intent(this, AdminActivity.class);
         startActivity(intent);
     }
 

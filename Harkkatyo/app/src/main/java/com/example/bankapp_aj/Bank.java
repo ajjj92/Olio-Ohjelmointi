@@ -17,6 +17,7 @@ public class Bank implements Serializable {
     private User activeuser=null;
     private User tempuser=null;
     private int activeuser_id;
+    private boolean adminstatus=false;
 
     private Bank() {
 
@@ -71,5 +72,12 @@ public class Bank implements Serializable {
 
     public void setTempuser(User user ) {
         this.tempuser = user;
+    }
+
+    public void setAdminstatus(boolean status) {
+        this.adminstatus=status;
+    }
+    public boolean getAdminstatus() {
+        return this.adminstatus;
     }
 }

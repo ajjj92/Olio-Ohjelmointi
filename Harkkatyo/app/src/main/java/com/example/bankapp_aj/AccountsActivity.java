@@ -26,7 +26,7 @@ public class AccountsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accounts);
-        accountlistview = (ListView)findViewById(R.id.cardlistview);
+        accountlistview = (ListView)findViewById(R.id.activitylistview);
         depositamount = (EditText) findViewById(R.id.depositamount);
         addnewdaily = (Button) findViewById(R.id.addnewdaily);
         addnewsaving= (Button) findViewById(R.id.addnewsaving);

@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.io.IOException;
@@ -36,7 +35,7 @@ public class CardsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cards);
 
         accountlist = (Spinner) findViewById(R.id.linkedaccount);
-        cardlistview = (Spinner) findViewById(R.id.cardlistview);
+        cardlistview = (Spinner) findViewById(R.id.activitylistview);
         creditlimit = (EditText) findViewById(R.id.creditlimit);
         addnewcreditcard = (Button) findViewById(R.id.creditbutton);
         addnewdebitcard = (Button) findViewById(R.id.debitbutton);
@@ -109,7 +108,8 @@ public class CardsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 activedropitem = i;
-
+                cardadapt = new ArrayAdapter<Card>(CardsActivity.this, android.R.layout.simple_dropdown_item_1line,Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getCardlist());
+                cardlistview.setAdapter(cardadapt);
 
 
 
@@ -125,7 +125,6 @@ public class CardsActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 activecarddopitem= i;
-                System.out.println(activecarddopitem);
 
 
             }

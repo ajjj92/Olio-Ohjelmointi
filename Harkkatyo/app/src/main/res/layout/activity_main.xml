@@ -40,7 +40,7 @@
         android:background="@drawable/rounded_button"
         android:text="Transfer Money"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardlistview" />
+        app:layout_constraintTop_toBottomOf="@+id/activitylistview" />
 
     <Button
         android:id="@+id/paybutton"
@@ -57,10 +57,10 @@
         app:layout_constraintEnd_toStartOf="@+id/transferbutton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardlistview" />
+        app:layout_constraintTop_toBottomOf="@+id/activitylistview" />
 
     <ListView
-        android:id="@+id/cardlistview"
+        android:id="@+id/activitylistview"
         android:layout_width="359dp"
         android:layout_height="271dp"
         android:layout_marginStart="8dp"

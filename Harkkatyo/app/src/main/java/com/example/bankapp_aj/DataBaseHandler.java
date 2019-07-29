@@ -6,8 +6,11 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -44,16 +47,50 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE "+TABLE_NAME+" ( "+_id+" INTEGER PRIMARY KEY AUTOINCREMENT, "+COLUMN_ID+" TEXT, "+COLUMN_PASSWORD+" TEXT,"+COLUMN_USERBYTES+" blop)");
+
+        //create admin user with the database
+        User user2 = new User ("admin", "admin");
+        Bank.getInstance().setActiveuser(user2);
+        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount(2000));
+        Bank.getInstance().getActiveuser().addAccountToUser(new SavingAccount(2000));
+        adminAdder(sqLiteDatabase, user2);
+        Bank.getInstance().setActiveuser(null);
+
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
+
+    public boolean adminAdder(SQLiteDatabase sqLiteDatabase,User user) {
+        byte [] userinbytes = new byte[0];
+        try {
+            userinbytes = ObjecttoByte(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_ID, user.getName());
+        contentValues.put(COLUMN_PASSWORD, user.getPassword());
+        contentValues.put(COLUMN_USERBYTES, userinbytes);
+        long result = sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+        Log.e("DATABASE OPERATION", "Database data added.....");
+        //returns -1 if incorrect
+        if(result == -1) {
+            return false;
+        } else {
+            return  true;
+        }
+
+    }
+
     public boolean addData(User user) {
         byte [] userinbytes = new byte[0];
         try {
@@ -246,6 +283,36 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             e.printStackTrace();
         }
     }
+
+    public void filladminlist() {
+        Bank.getInstance().getUserlist().clear();
+        SQLiteDatabase database = this.getReadableDatabase();
+        String sql = "SELECT * FROM "+TABLE_NAME;
+        Cursor cursor = (Cursor) database.rawQuery(sql, null);
+        byte [] data = new byte[0];
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Log.e("Cursor", String.valueOf(cursor.getColumnCount()));
+            Log.e("Cursor", cursor.getColumnName(3));
+
+
+            try {
+                data = cursor.getBlob(3);
+                User user = byteToObject(data);
+                Bank.getInstance().getUserlist().add(user);
+                cursor.moveToNext();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (CursorIndexOutOfBoundsException e) {
+                e.printStackTrace();
+            }
+        }
+        cursor.close();
+    }
+
 
     public void queryNopass(String name) {
         SQLiteDatabase database = this.getReadableDatabase();

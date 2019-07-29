@@ -18,7 +18,11 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
     </activity>
-        <activity android:name=".AdminActivity" />
+        <activity android:name=".AdminActivity">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+    </activity>
         <activity android:name=".CardsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

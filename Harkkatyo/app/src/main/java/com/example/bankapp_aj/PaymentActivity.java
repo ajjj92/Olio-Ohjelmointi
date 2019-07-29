@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +17,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.security.SecurityPermission;
@@ -50,6 +52,7 @@ public class PaymentActivity extends AppCompatActivity {
         activeuserlist.setAdapter(activeuseradapter);
         moneytosend = findViewById(R.id.amounttosend);
 
+
         ajbankswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -58,12 +61,15 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
-                } else if (b == false) {
+                }if (b == false) {
+
                     isAjBank = false;
 
                 }
             }
         });
+
+
 
         tempuserlist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -93,39 +99,54 @@ public class PaymentActivity extends AppCompatActivity {
 
 
     public void newPayment(View view) {
-
         if(isAjBank) {
+            if(tempuseradapter != null) {
+                tempuseradapter.clear();
+                tempuseradapter.notifyDataSetChanged();
+            }
             namestring = name.getText().toString();
-
-
             DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
             dataBaseHandler.queryNopass(namestring);
+
             if (Bank.getInstance().getTempuser() != null) {
                 tempuseradapter = new ArrayAdapter<Account>(PaymentActivity.this, R.layout.support_simple_spinner_dropdown_item,
                         Bank.getInstance().getTempuser().getAccountlist());
                 tempuserlist.setAdapter(tempuseradapter);
+
+        }
+    }if(!isAjBank) {
+            namestring = name.getText().toString();
+            if(tempuseradapter != null) {
+                tempuseradapter.clear();
+                tempuseradapter.notifyDataSetChanged();
             }
-
-        } else {
-
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void sendMoney(View view) throws IOException {
-            Float moneyamount = Float.valueOf(moneytosend.getText().toString());
-        if(moneyamount <= Bank.getInstance().getActiveuser().getAccountlist().get(selectedactiveaccount).getMoneyamount()) {
+        Float moneyamount = Float.valueOf(moneytosend.getText().toString());
+        if(isAjBank) {
+            if(moneyamount <= Bank.getInstance().getActiveuser().getAccountlist().get(selectedactiveaccount).getMoneyamount()) {
+                Bank.getInstance().getActiveuser().getAccountlist().get(selectedactiveaccount).takeMoney(moneyamount,
+                        Bank.getInstance().getActiveuser().getName(), Bank.getInstance().getTempuser().getName());
+
+                Bank.getInstance().getTempuser().getAccountlist().get(selectedtempaccount).addMoney(moneyamount,
+                        Bank.getInstance().getActiveuser().getName(), Bank.getInstance().getTempuser().getName());
+
+                DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
+                dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName(),Bank.getInstance().getActiveuser());
+
+                dataBaseHandler.updateUserdata(Bank.getInstance().getTempuser().getName(),Bank.getInstance().getTempuser());
+            }
+        } else {
             Bank.getInstance().getActiveuser().getAccountlist().get(selectedactiveaccount).takeMoney(moneyamount,
-                    Bank.getInstance().getActiveuser().getName(), Bank.getInstance().getTempuser().getName());
-
-            Bank.getInstance().getTempuser().getAccountlist().get(selectedtempaccount).addMoney(moneyamount,
-                    Bank.getInstance().getActiveuser().getName(), Bank.getInstance().getTempuser().getName());
-
+                    Bank.getInstance().getActiveuser().getName(), name.getText().toString());
             DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
             dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName(),Bank.getInstance().getActiveuser());
-
-            dataBaseHandler.updateUserdata(Bank.getInstance().getTempuser().getName(),Bank.getInstance().getTempuser());
         }
+
+
 
 
     }

@@ -32,14 +32,6 @@ public class Login extends AppCompatActivity {
 
         dataBaseHandler = new DataBaseHandler(this);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View view) {
-                test();
-            }
-        });
-
     }
 
 
@@ -52,8 +44,13 @@ public class Login extends AppCompatActivity {
 
         if (Bank.getInstance().getActiveuser() != null) {
 
-            openMainActivity();
-
+            if(Bank.getInstance().getActiveuser().getName().equals("admin")){
+                Bank.getInstance().setAdminstatus(true);
+                dataBaseHandler.filladminlist();
+                openMainActivity();
+            }else {
+                openMainActivity();
+            }
 
         }
 
@@ -63,20 +60,7 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void test() {
 
-        User user = new User ("atte", "atte");
-        Bank.getInstance().setActiveuser(user);
-        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount(200));
-        dataBaseHandler.addData(user);
-
-        User user2 = new User ("admin", "admin");
-        Bank.getInstance().setActiveuser(user2);
-        Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount(2000));
-        dataBaseHandler.addData(user2);
-
-    }
     public void deletedata(View view) {
         dataBaseHandler.deletedata();
     }
