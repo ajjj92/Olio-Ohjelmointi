@@ -33,7 +33,11 @@ public class Login extends AppCompatActivity {
         dataBaseHandler = new DataBaseHandler(this);
 
     }
+    @Override protected void onResume() {
+        super.onResume();
+        Bank.getInstance().setAdminstatus(false);
 
+    }
 
     public void login(View view) {
         testname = username.getText().toString();
@@ -61,9 +65,7 @@ public class Login extends AppCompatActivity {
     }
 
 
-    public void deletedata(View view) {
-        dataBaseHandler.deletedata();
-    }
+
 
 
 }

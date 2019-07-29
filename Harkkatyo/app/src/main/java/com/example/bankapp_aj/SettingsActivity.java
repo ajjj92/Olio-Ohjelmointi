@@ -1,7 +1,5 @@
 package com.example.bankapp_aj;
 
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -24,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_activity);
+        setContentView(R.layout.activity_settings);
 
         ActionBar actionBar = getSupportActionBar();
 
@@ -84,9 +82,6 @@ public void setChanges() throws IOException {
 
 
 }
-public void getData(View view) {
-    DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
-    Log.e("DATA:", dataBaseHandler.getData());
-}
+
 
 }

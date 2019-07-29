@@ -259,7 +259,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
         return null;
     }
-
+    public void deleteUserData(String name) {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String sql = "Delete FROM "+TABLE_NAME+" WHERE " + COLUMN_ID+ "='" + name + "'";
+        database.execSQL(sql);
+        Log.e("DATABASE OPERATION", "Database deleted");
+    }
     public void testquery(String name, String pass) {
         SQLiteDatabase database = this.getReadableDatabase();
         String sql = "SELECT * FROM "+TABLE_NAME+" WHERE " + COLUMN_ID+ "='" + name + "' AND " + COLUMN_PASSWORD + "='" + pass+"'";

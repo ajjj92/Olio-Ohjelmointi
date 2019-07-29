@@ -36,12 +36,5 @@
         android:layout_height="wrap_content"
         android:text="Apply" />
 
-    <Button
-        android:id="@+id/get"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="getData"
-        android:text="Button" />
-
 
 </LinearLayout>

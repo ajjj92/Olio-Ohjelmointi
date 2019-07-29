@@ -85,16 +85,17 @@ public void initUicomponents() {
 
 
 
-    @Override
-    protected void onRestart() {
-// TODO Auto-generated method stub
-        super.onRestart();
+
+
+    @Override protected void onResume() {
+        super.onResume();
         initUicomponents();
         setOnclickListeners();
 
     }
 
-public void setOnclickListeners() {
+
+    public void setOnclickListeners() {
 
 
     if (Bank.getInstance().getAdminstatus()) {

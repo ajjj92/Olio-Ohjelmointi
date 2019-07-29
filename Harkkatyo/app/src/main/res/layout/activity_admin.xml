@@ -8,8 +8,8 @@
 
     <Spinner
         android:id="@+id/userlist"
-        android:layout_width="283dp"
-        android:layout_height="47dp"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
@@ -17,55 +17,114 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttoncarddel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="deleteCard"
-        android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonaccdel2" />
+        android:id="@+id/buttonaccdel"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="deleteAccount"
+        android:text="Del"
+        android:background="@drawable/rounded_button"
+
+        app:layout_constraintStart_toEndOf="@+id/accountlist"
+        app:layout_constraintTop_toBottomOf="@+id/buttonuserdel2" />
 
     <Button
-        android:id="@+id/buttonaccdel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="deleteAccount"
-        android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/buttonuserdel"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="addCreditCard"
+
+        android:text="CRE"
+        app:layout_constraintStart_toEndOf="@+id/buttonuserdel5"
+        app:layout_constraintTop_toBottomOf="@+id/buttonuserdel3" />
+
+    <Button
+        android:id="@+id/buttonuserdel5"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="addDebitCard"
+
+        android:text="DE"
+        app:layout_constraintStart_toEndOf="@+id/buttoncarddel"
+        app:layout_constraintTop_toBottomOf="@+id/buttonuserdel4" />
+
+    <Button
+        android:id="@+id/buttonuserdel3"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="addSavingAccount"
+
+        android:text="SA"
+        app:layout_constraintStart_toEndOf="@+id/buttonuserdel4"
+        app:layout_constraintTop_toBottomOf="@+id/buttonuserdel2" />
+
+    <Button
+        android:id="@+id/buttonuserdel4"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
+        android:onClick="addDailyAccount"
+
+        android:text="DA"
+        app:layout_constraintStart_toEndOf="@+id/buttonaccdel"
+        app:layout_constraintTop_toBottomOf="@+id/buttonuserdel2" />
+
+    <Button
+        android:id="@+id/buttonuserdel2"
+        android:layout_width="54dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:onClick="deleteUser"
+        android:text="Del"
+        android:background="@drawable/rounded_button"
+
+        app:layout_constraintStart_toEndOf="@+id/userlist"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonaccdel2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:onClick="deleteAccount"
-        android:text="Delete"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/buttoncarddel"
+        android:layout_width="54dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:onClick="deleteCard"
+        android:text="Del"
+        android:background="@drawable/rounded_button"
+
+        app:layout_constraintStart_toEndOf="@+id/cardlist"
         app:layout_constraintTop_toBottomOf="@+id/buttonaccdel" />
 
     <Spinner
         android:id="@+id/cardlist"
-        android:layout_width="280dp"
-        android:layout_height="54dp"
+        android:layout_width="196dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountlist" />
 
     <Spinner
         android:id="@+id/accountlist"
-        android:layout_width="280dp"
-        android:layout_height="54dp"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
@@ -104,6 +163,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="60dp"
+        android:background="@drawable/rounded_button"
+
         android:text="Add User"
         app:layout_constraintStart_toEndOf="@+id/editname"
         app:layout_constraintTop_toBottomOf="@+id/cardlist" />
@@ -120,5 +181,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editpass" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
+        android:text="Acc/Card type"
+        app:layout_constraintBottom_toTopOf="@+id/buttonuserdel3"
+        app:layout_constraintStart_toEndOf="@+id/buttonuserdel2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editcredit"
+        android:layout_width="89dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/editname"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="8dp"
+        android:text="Credit amount"
+        app:layout_constraintStart_toEndOf="@+id/editname"
+        app:layout_constraintTop_toBottomOf="@+id/buttonuserdel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
