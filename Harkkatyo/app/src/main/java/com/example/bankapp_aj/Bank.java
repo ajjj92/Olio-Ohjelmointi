@@ -16,7 +16,6 @@ public class Bank implements Serializable {
     private String name = "AJ_BANK";
     private User activeuser=null;
     private User tempuser=null;
-    private int activeuser_id;
     private boolean adminstatus=false;
 
     private Bank() {
@@ -27,19 +26,10 @@ public class Bank implements Serializable {
     public static Bank getInstance() {
         if (bank == null) {
             bank = new Bank();
-
         }
         return bank;
     }
 
-    public void createUser(String name, String password, Context context) {
-        User user = new User(name, password);
-        DataBaseHandler dataBaseHandler = new DataBaseHandler(context);
-        dataBaseHandler.addData(user);
-        dataBaseHandler.close();
-
-        this.userlist.add(user);
-    }
 
     public User getActiveuser() {
         return this.activeuser;
@@ -48,18 +38,10 @@ public class Bank implements Serializable {
     public void setActiveuser(User user ) {
         this.activeuser = user;
     }
-    public void setActiveuser_id(int i) {
-        this.activeuser_id = i;
-    }
-    public int getActiveuser_id() {
-        return this.activeuser_id;
-    }
 
     public String getName() {
         return this.name;
     }
-
-
 
 
     public ArrayList<User> getUserlist() {

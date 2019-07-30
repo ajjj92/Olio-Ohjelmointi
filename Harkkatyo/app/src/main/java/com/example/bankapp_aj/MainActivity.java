@@ -45,17 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-public void notifyChange() {
-        adapt.notifyDataSetChanged();
-        actadapt.notifyDataSetChanged();
-        moneyText.setText(String.valueOf(Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getMoneyamount())+"€");
-
-}
-
-public int getActivedropitem() {
-        return this.activedropitem;
-}
-
 public void initUicomponents() {
     frommoney = (TextView)findViewById(R.id.frommoney);
     tomoney = (TextView)findViewById(R.id.tomoney);
@@ -86,7 +75,7 @@ public void initUicomponents() {
 
 
 
-
+    //Redo components and listeners on resume
     @Override protected void onResume() {
         super.onResume();
         initUicomponents();
@@ -97,7 +86,7 @@ public void initUicomponents() {
 
     public void setOnclickListeners() {
 
-
+    //If user has adminstatus make name clickable and open an admin menu
     if (Bank.getInstance().getAdminstatus()) {
         nametext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +113,7 @@ public void initUicomponents() {
 
 
 
+    //Button listener
     View.OnClickListener listener = new View.OnClickListener() {
 
         @Override
@@ -131,9 +121,6 @@ public void initUicomponents() {
 
             if (view == transferbutton){
                 openTransferActivity();
-
-
-
             }
             if(view == cardbutton) {
                 openCardsActivity();
@@ -147,8 +134,6 @@ public void initUicomponents() {
 
         }
     };
-
-
 
     transferbutton.setOnClickListener(listener);
     paymentbutton.setOnClickListener(listener);
@@ -164,13 +149,14 @@ public void updateAdapter() {
         listview.setAdapter(actadapt);
     }
 
+    //Create menu tab on the top
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
         return true;
     }
-
+    //Create add settings menu to menutab
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

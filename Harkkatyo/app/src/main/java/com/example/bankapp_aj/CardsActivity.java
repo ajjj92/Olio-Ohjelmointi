@@ -50,13 +50,14 @@ public class CardsActivity extends AppCompatActivity {
 
 
 
-
+        //OnClicListener for some buttons
         View.OnClickListener listener3 = new View.OnClickListener() {
 
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 int creditlimittosend;
+                //Add new credit card.
                 if (view == addnewcreditcard){
                     creditlimittosend = Integer.valueOf(creditlimit.getText().toString());
                     Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).addCardtoAccount(new CreditCard(Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem), creditlimittosend));
@@ -70,6 +71,7 @@ public class CardsActivity extends AppCompatActivity {
                     cardadapt.notifyDataSetChanged();
 
                 }
+                //Add new debit card.
                 if(view == addnewdebitcard) {
                     Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).addCardtoAccount(new DebitCard(Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem)));
                     DataBaseHandler dataBaseHandler = new DataBaseHandler(CardsActivity.this);
@@ -81,13 +83,14 @@ public class CardsActivity extends AppCompatActivity {
                     cardadapt.notifyDataSetChanged();
 
 
-
+                    //Withdrad from card
                 } if(view == withdraw) {
                     try {
                         Withdraw(Float.valueOf(moneyamount.getText().toString()));
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    //Deposit to card
                 } if (view == deposit) {
                     try {
                         Deposit(Float.valueOf(moneyamount.getText().toString()));
@@ -108,6 +111,7 @@ public class CardsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 activedropitem = i;
+                //Recreate adapters after change
                 cardadapt = new ArrayAdapter<Card>(CardsActivity.this, android.R.layout.simple_dropdown_item_1line,Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getCardlist());
                 cardlistview.setAdapter(cardadapt);
 
@@ -137,17 +141,13 @@ public class CardsActivity extends AppCompatActivity {
 
     }
 
-    public void updateAdapter() {
-        cardadapt = new ArrayAdapter<Card>(this, R.layout.support_simple_spinner_dropdown_item,
-                Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getCardlist());
-        cardlistview.setAdapter(cardadapt);
-    }
-
+    //Withdraw money from card
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void Withdraw(float moneyamount) throws IOException {
-
+        //Check if credit card
         if(Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getCardlist().
                 get(activecarddopitem).getCardtype() == "Creditcard") {
+            //Check for credit limit
             if(moneyamount <= Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).
                     getCardlist().get(activecarddopitem).getCreditlimit() +
                     Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getCardlist().
@@ -157,11 +157,22 @@ public class CardsActivity extends AppCompatActivity {
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(CardsActivity.this);
                 dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName(),Bank.getInstance().getActiveuser());
             }
+            //If debit card
+        } else {
+            //Check if account has enough money
+            if(moneyamount <= Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).
+                    getCardlist().get(activecarddopitem).getLinkedaccount().getMoneyamount()) {
+                Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getCardlist().
+                        get(activecarddopitem).getLinkedaccount().takeMoney(moneyamount);
+                DataBaseHandler dataBaseHandler = new DataBaseHandler(CardsActivity.this);
+                dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName(),Bank.getInstance().getActiveuser());
+            }
+        }
         }
 
 
-    }
 
+    //Deposit money to card
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void Deposit(float moneyamount) throws IOException {
         Bank.getInstance().getActiveuser().getAccountlist().get(activedropitem).getCardlist().get(activecarddopitem).getLinkedaccount().addMoney(moneyamount);

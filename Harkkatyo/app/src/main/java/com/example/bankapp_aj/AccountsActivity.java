@@ -14,6 +14,7 @@ import android.widget.ListView;
 import java.io.IOException;
 
 public class AccountsActivity extends AppCompatActivity {
+
     private ArrayAdapter<Account> adaptlist;
     private ListView accountlistview;
     private EditText depositamount;
@@ -34,12 +35,17 @@ public class AccountsActivity extends AppCompatActivity {
         adaptlist = new ArrayAdapter<Account>(this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getActiveuser().getAccountlist());
         accountlistview.setAdapter(adaptlist);
 
+
+
+        //OnClicklistener for buttons
         View.OnClickListener listener = new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
 
+                //Add new daily account
                 if (view == addnewdaily) {
+                    //check for empty
                     if(!depositamount.getText().toString().equals("")) {
                         moneyamount = Float.valueOf(depositamount.getText().toString());
                         Bank.getInstance().getActiveuser().addAccountToUser(new DailyAccount(moneyamount));
@@ -52,11 +58,9 @@ public class AccountsActivity extends AppCompatActivity {
                         }
                     }
                     }
-
-
-
-
+                //Add new saving account
                 if(view == addnewsaving) {
+                    //check for empty
                     if (!depositamount.getText().toString().equals("")) {
                         moneyamount = Float.valueOf(depositamount.getText().toString());
                         Bank.getInstance().getActiveuser().addAccountToUser(new SavingAccount(moneyamount));

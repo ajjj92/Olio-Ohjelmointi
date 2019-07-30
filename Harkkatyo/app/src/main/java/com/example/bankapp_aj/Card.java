@@ -15,7 +15,7 @@ public class Card implements Serializable {
     protected  int creditlimit;
 
     public Card() {
-        //do stuff
+        //Empty Constructor
 
     }
     public int getCreditlimit() {
@@ -26,6 +26,8 @@ public class Card implements Serializable {
     public Account getLinkedaccount() {
         return this.linkedaccount;
     }
+
+    //Methods for payment limits, not used in demo currently.
     public void setPaymentlimit(int paymentlimit) {
         this.paymentlimit = paymentlimit;
     }
@@ -48,8 +50,9 @@ public class Card implements Serializable {
 
 class CreditCard extends Card implements Serializable {
 
+    //Creates a card with randomly generated code
+
     public CreditCard(Account linkedaccount, int creditlimit) {
-        //do stuff
         this.linkedaccount = linkedaccount;
         this.creditlimit = creditlimit;
         this.cardtype = "Creditcard";
@@ -67,13 +70,15 @@ class CreditCard extends Card implements Serializable {
 
 
 
-
+    //Also shows credit limit if credit card
     @Override
     public String toString() {
         return getCode() + " " + getCreditlimit() + " € credit limit";
     }
 }
     class DebitCard extends Card implements Serializable {
+
+        //Creates a card with randomly generated code
 
 
         public DebitCard(Account linkedaccount) {

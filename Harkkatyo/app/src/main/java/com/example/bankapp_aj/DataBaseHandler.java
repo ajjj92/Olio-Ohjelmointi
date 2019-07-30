@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.RequiresApi;
 
@@ -18,7 +17,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
@@ -69,6 +67,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    //Method to add new users from admin menu.
     public boolean adminAdder(SQLiteDatabase sqLiteDatabase,User user) {
         byte [] userinbytes = new byte[0];
         try {
@@ -91,6 +90,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     }
 
+    //Method for normal data adding.
     public boolean addData(User user) {
         byte [] userinbytes = new byte[0];
         try {
@@ -113,13 +113,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
     }
 
-
-
-
+    //Method for converting an user object to byte array
     public byte[] ObjecttoByte(User user) throws IOException {
         ByteArrayOutputStream out = null;
         ObjectOutputStream os = null;
-
         try{
             out = new ByteArrayOutputStream();
             os = new ObjectOutputStream(out);
@@ -141,23 +138,21 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         Log.e("ObjecttoByte", "FINISHED");
         return out.toByteArray();
     }
+
+    //Method for converting byte array back to user object
     public User byteToObject(byte[] data) throws IOException, ClassNotFoundException {
         ByteArrayInputStream in = null;
         ObjectInputStream is = null;
         Object o = null;
-
-
             try {
                 in = new ByteArrayInputStream(data);
                 is = new ObjectInputStream(in);
                 Log.e("ObjectInputStream", is.toString());
                 while((o = is.readObject()) != null) {
-
                     if(o instanceof User) {
                         return  (User) o;
                     }
                 }
-
 
             } catch (EOFException ex) {
                 ex.printStackTrace();
@@ -166,8 +161,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             } catch (OptionalDataException e) {
                 e.printStackTrace();
 
-
             }finally {
+                //Checks to make sure stream is closed properly. Might not be needed.
                 if(is != null) {
                     try {
                         is.close();
@@ -182,34 +177,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
 
 
-
-    public User queryUserdata(String name, String pass) throws IOException, ClassNotFoundException {
-        String sql = "SELECT * FROM userdata";
-        SQLiteDatabase database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery(sql, null);
-        cursor.moveToFirst();
-        byte [] data = new byte[0];
-
-        while (!cursor.isAfterLast()) {
-            if (cursor.getCount()>0) {
-                data = cursor.getBlob(3);
-                User user = byteToObject(data);
-                if(cursor.getString(1).equals(name) && cursor.getString(2).equals(pass)) {
-
-                    Bank.getInstance().setActiveuser_id(cursor.getColumnIndex("_id"));
-                    Bank.getInstance().setActiveuser(user);
-                    return  user;
-
-
-                }
-            }
-
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return null;
-    }
-
+    //Method for updating user data.
     public int updateUserdata(String oldname, User userdata) throws IOException {
         String[] whereArgs = {oldname};
         SQLiteDatabase database = this.getWritableDatabase();
@@ -227,7 +195,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return i;
     }
 
-
+    //Method incase need to show all database data.
     public String getData() {
         String sql = "SELECT * FROM userdata";
         String datastring= "";
@@ -243,29 +211,17 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         cursor.close();
         return datastring;
     }
-    public byte[] makeUserObjecttoBytes(User user) {
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ObjectOutput out = null;
-        try {
-            bos = new ByteArrayOutputStream();
-            out = new ObjectOutputStream(bos);
-            out.writeObject(user);
-            byte [] userbytes = bos.toByteArray();
-            ByteArrayInputStream bais = new ByteArrayInputStream(userbytes);
-            out.flush();
-            return userbytes;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
     public void deleteUserData(String name) {
         SQLiteDatabase database = this.getReadableDatabase();
         String sql = "Delete FROM "+TABLE_NAME+" WHERE " + COLUMN_ID+ "='" + name + "'";
         database.execSQL(sql);
         Log.e("DATABASE OPERATION", "Database deleted");
     }
-    public void testquery(String name, String pass) {
+
+    //Main data base query method. Creates a user object from the database when
+    //searching with username and password.
+    public void mainQuery(String name, String pass) {
         SQLiteDatabase database = this.getReadableDatabase();
         String sql = "SELECT * FROM "+TABLE_NAME+" WHERE " + COLUMN_ID+ "='" + name + "' AND " + COLUMN_PASSWORD + "='" + pass+"'";
         Cursor cursor = (Cursor) database.rawQuery(sql, null);
@@ -274,10 +230,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         Log.e("Cursor", String.valueOf(cursor.getColumnCount()));
         Log.e("Cursor", cursor.getColumnName(3));
 
-
         try {
+            //Get and convert data
             data = cursor.getBlob(3);
             User user = byteToObject(data);
+            //Set active user to converted object
             Bank.getInstance().setActiveuser(user);
             cursor.close();
         } catch (IOException e) {
@@ -289,7 +246,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void filladminlist() {
+    //Method to fill userlist for admin page
+    public void fillAdminlist() {
         Bank.getInstance().getUserlist().clear();
         SQLiteDatabase database = this.getReadableDatabase();
         String sql = "SELECT * FROM "+TABLE_NAME;
@@ -299,8 +257,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         while (!cursor.isAfterLast()) {
             Log.e("Cursor", String.valueOf(cursor.getColumnCount()));
             Log.e("Cursor", cursor.getColumnName(3));
-
-
             try {
                 data = cursor.getBlob(3);
                 User user = byteToObject(data);
@@ -318,7 +274,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         cursor.close();
     }
 
-
+    //Method for querying data without password
     public void queryNopass(String name) {
         SQLiteDatabase database = this.getReadableDatabase();
         String sql = "SELECT * FROM "+TABLE_NAME+" WHERE " + COLUMN_ID+ "='" + name + "'";
@@ -327,7 +283,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         Log.e("Cursor", String.valueOf(cursor.getColumnCount()));
         Log.e("Cursor", cursor.getColumnName(3));
-
 
         try {
             data = cursor.getBlob(3);
@@ -344,7 +299,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
 
     }
-
+    //Not used currently
     public void deletedata() {
         String sql = "delete from "+ TABLE_NAME;
         SQLiteDatabase database = this.getReadableDatabase();

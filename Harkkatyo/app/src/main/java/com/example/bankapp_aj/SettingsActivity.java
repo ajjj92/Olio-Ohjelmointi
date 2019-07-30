@@ -62,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+//Method to save user changes
 public void setChanges() throws IOException {
     String oldname = Bank.getInstance().getActiveuser().getName();
 
@@ -71,7 +71,7 @@ public void setChanges() throws IOException {
     Bank.getInstance().getActiveuser().setPassword(pass.getText().toString());
     Bank.getInstance().getActiveuser().setAddress(address.getText().toString());
 
-
+    //Save data
     DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
     dataBaseHandler.updateUserdata(oldname, Bank.getInstance().getActiveuser());
 

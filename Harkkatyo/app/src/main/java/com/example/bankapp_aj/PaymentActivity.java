@@ -59,10 +59,7 @@ public class PaymentActivity extends AppCompatActivity {
                 if (b == true) {
                     isAjBank = true;
 
-
-
                 }if (b == false) {
-
                     isAjBank = false;
 
                 }
@@ -70,7 +67,7 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
 
-
+        //Tempuser used for simulating the transaction.
         tempuserlist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -99,6 +96,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
     public void newPayment(View view) {
+        //if user in in AJbank
         if(isAjBank) {
             if(tempuseradapter != null) {
                 tempuseradapter.clear();
@@ -114,6 +112,7 @@ public class PaymentActivity extends AppCompatActivity {
                 tempuserlist.setAdapter(tempuseradapter);
 
         }
+    //if user is not in AjBank add just the name to the activity
     }if(!isAjBank) {
             namestring = name.getText().toString();
             if(tempuseradapter != null) {
@@ -123,22 +122,27 @@ public class PaymentActivity extends AppCompatActivity {
         }
     }
 
+    //Method for sending the money after values have been set.
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void sendMoney(View view) throws IOException {
         Float moneyamount = Float.valueOf(moneytosend.getText().toString());
+
         if(isAjBank) {
+            //Check if user has enough money
             if(moneyamount <= Bank.getInstance().getActiveuser().getAccountlist().get(selectedactiveaccount).getMoneyamount()) {
+                //Take from payer
                 Bank.getInstance().getActiveuser().getAccountlist().get(selectedactiveaccount).takeMoney(moneyamount,
                         Bank.getInstance().getActiveuser().getName(), Bank.getInstance().getTempuser().getName());
-
+                //Give to receiver
                 Bank.getInstance().getTempuser().getAccountlist().get(selectedtempaccount).addMoney(moneyamount,
                         Bank.getInstance().getActiveuser().getName(), Bank.getInstance().getTempuser().getName());
-
+                //Save data
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
                 dataBaseHandler.updateUserdata(Bank.getInstance().getActiveuser().getName(),Bank.getInstance().getActiveuser());
 
                 dataBaseHandler.updateUserdata(Bank.getInstance().getTempuser().getName(),Bank.getInstance().getTempuser());
             }
+            //if user is not AJbank user
         } else {
             Bank.getInstance().getActiveuser().getAccountlist().get(selectedactiveaccount).takeMoney(moneyamount,
                     Bank.getInstance().getActiveuser().getName(), name.getText().toString());

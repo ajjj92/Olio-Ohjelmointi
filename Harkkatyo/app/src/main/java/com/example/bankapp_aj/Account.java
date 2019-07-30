@@ -14,10 +14,9 @@ import java.util.Random;
  * AtteJantunen
  */
 public abstract class Account implements Serializable {
+
     protected String id;
     protected float moneyamount=0;
-    protected int interest;
-    protected String accounttype;
     protected ArrayList<AccountActivity> accountactivity = new ArrayList<>();
     protected ArrayList<Card> cardlist = new ArrayList<>();
 
@@ -38,7 +37,7 @@ public abstract class Account implements Serializable {
     public void addMoney(float amount
     ) {
         this.moneyamount += amount;
-
+            //Creates activity entry without payee or receiver
             this.accountactivity.add(new AccountActivity("","",amount));
 
         }
@@ -47,7 +46,7 @@ public abstract class Account implements Serializable {
     public void addMoney(float amount, String payer, String receiver
     ) {
         this.moneyamount += amount;
-
+        //Creates activity entry with payee and receiver
         this.accountactivity.add(new AccountActivity(payer,receiver,amount));
 
     }
@@ -61,29 +60,26 @@ public abstract class Account implements Serializable {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void takeMoney(float amount) {
             this.moneyamount -= amount;
+        //Creates activity entry without payee or receiver
         this.accountactivity.add(new AccountActivity("","",-amount));
         }
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void takeMoney(float amount, String payer, String receiver) {
         this.moneyamount -= amount;
+        //Creates activity entry with payee and receiver
         this.accountactivity.add(new AccountActivity(payer,receiver,-amount));
     }
 
-
-    public void addActivity(AccountActivity activity){
-        this.accountactivity.add(activity);
-    }
     public ArrayList<AccountActivity> getActivityList() {
-
             return this.accountactivity;
-
-
      }
+
     }
-
-
 
     class SavingAccount extends Account implements Serializable{
+
+
+        //Creates an account with randomly generated code
 
         @RequiresApi(api = Build.VERSION_CODES.O)
         public SavingAccount(float moneyamount) {
@@ -109,6 +105,8 @@ public abstract class Account implements Serializable {
 
     class DailyAccount extends Account implements Serializable{
 
+        //Creates an account with randomly generated code
+
         @RequiresApi(api = Build.VERSION_CODES.O)
         public DailyAccount(float moneyamount) {
             Random rand = new Random();
@@ -122,8 +120,6 @@ public abstract class Account implements Serializable {
             }
             this.id = acc;
             this.addMoney(moneyamount);
-
-
 
         }
 

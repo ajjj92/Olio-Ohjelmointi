@@ -52,8 +52,10 @@ public class AdminActivity extends AppCompatActivity {
         adduser = (Button) findViewById(R.id.buttonadd);
         activitylist = (ListView)findViewById(R.id.activitylist);
         creditedit = (EditText) findViewById(R.id.editcredit);
+
         DataBaseHandler dataBaseHandler = new DataBaseHandler(AdminActivity.this);
-        dataBaseHandler.filladminlist();
+        dataBaseHandler.fillAdminlist();
+        //Creating adapters
         useradapter = new ArrayAdapter<User>(this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getUserlist());
         accountadapter = new ArrayAdapter<Account>(this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getUserlist().get(activeuser).getAccountlist());
         cardadapter = new ArrayAdapter<Card>(this, android.R.layout.simple_dropdown_item_1line,Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(0).getCardlist());
@@ -71,6 +73,8 @@ public class AdminActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 activeacc= i;
+                //Adapters have to be recreated after change
+                //Only notfying of change doesnt seem to work
 
                 cardadapter = new ArrayAdapter<Card>(AdminActivity.this, android.R.layout.simple_dropdown_item_1line,Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(activeacc).getCardlist());
                 cardlist.setAdapter(cardadapter);
@@ -89,11 +93,7 @@ public class AdminActivity extends AppCompatActivity {
         cardlist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
                 activecard= i;
-
-
-
 
             }
 
@@ -107,6 +107,10 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 activeuser = i;
+
+                //Adapters have to be recreated after change
+                //Only notfying of change doesnt seem to work
+
                 accountadapter = new ArrayAdapter<Account>(AdminActivity.this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getUserlist().get(i).getAccountlist());
                 accounlist.setAdapter(accountadapter);
 
@@ -117,14 +121,10 @@ public class AdminActivity extends AppCompatActivity {
                 }catch (IndexOutOfBoundsException e) {
                     e.printStackTrace();
                 }
-
-
-
-            }
+      }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
@@ -135,6 +135,7 @@ public class AdminActivity extends AppCompatActivity {
                 String name = editname.getText().toString();
                 String pass = editpass.getText().toString();
                 if(name.length() !=0 && pass.length()!=0) {
+                    //Creates new user
                     addUser(name, pass);
 
                 }
@@ -143,23 +144,24 @@ public class AdminActivity extends AppCompatActivity {
 
 
     }
-
+    //Deletes the selected account and recreates adapters
     public void deleteAccount(View view) throws IOException {
             Bank.getInstance().getUserlist().get(activeuser).getAccountlist().remove(activeacc);
             DataBaseHandler dataBaseHandler = new DataBaseHandler(AdminActivity.this);
             dataBaseHandler.updateUserdata(Bank.getInstance().getUserlist().get(activeuser).getName(), Bank.getInstance().getUserlist().get(activeuser));
-            dataBaseHandler.filladminlist();
+            dataBaseHandler.fillAdminlist();
             accountadapter = new ArrayAdapter<Account>(this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getUserlist().get(activeuser).getAccountlist());
             accounlist.setAdapter(accountadapter);
 
 
     }
+    //Deletes the selected card and recreates adapters
     public void deleteCard(View view) {
         try{
             Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(activeacc).getCardlist().remove(activecard);
             DataBaseHandler dataBaseHandler = new DataBaseHandler(AdminActivity.this);
             dataBaseHandler.updateUserdata(Bank.getInstance().getUserlist().get(activeuser).getName(), Bank.getInstance().getUserlist().get(activeuser));
-            dataBaseHandler.filladminlist();
+            dataBaseHandler.fillAdminlist();
             cardadapter = new ArrayAdapter<Card>(this, android.R.layout.simple_dropdown_item_1line,Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(activeacc).getCardlist());
             cardlist.setAdapter(cardadapter);
         } catch (IllegalStateException e){
@@ -169,27 +171,34 @@ public class AdminActivity extends AppCompatActivity {
         }
 
     }
+    //Deletes the selected user and recreates adapters
     public void deleteUser(View view) {
         DataBaseHandler dataBaseHandler = new DataBaseHandler(AdminActivity.this);
         dataBaseHandler.deleteUserData(Bank.getInstance().getUserlist().get(activeuser).getName());
-        dataBaseHandler.filladminlist();
+        dataBaseHandler.fillAdminlist();
         useradapter = new ArrayAdapter<User>(this, android.R.layout.simple_dropdown_item_1line, Bank.getInstance().getUserlist());
         userlist.setAdapter(useradapter);
 
     }
+    //Adds new user to the database
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void addUser(String name, String pass) {
         DataBaseHandler dataBaseHandler = new DataBaseHandler(AdminActivity.this);
         User user = new User (name, pass);
+        //Using tempuser to add data
         Bank.getInstance().setTempuser(user);
         Bank.getInstance().getTempuser().addAccountToUser(new DailyAccount(0));
         dataBaseHandler.addData(user);
-        dataBaseHandler.filladminlist();
+        //Refill the admin list of users
+        dataBaseHandler.fillAdminlist();
+        //update adapter
         useradapter.notifyDataSetChanged();
     }
 
+    //Adds new account to the selected user and recreate adapters.
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void addDailyAccount(View view) throws IOException {
+        //Choose the user from the list
         Bank.getInstance().getUserlist().get(activeuser).addAccountToUser(new DailyAccount(0));
         DataBaseHandler dataBaseHandler = new DataBaseHandler(AdminActivity.this);
         dataBaseHandler.updateUserdata(Bank.getInstance().getUserlist().get(activeuser).getName(), Bank.getInstance().getUserlist().get(activeuser));
@@ -197,6 +206,7 @@ public class AdminActivity extends AppCompatActivity {
         accounlist.setAdapter(accountadapter);
 
     }
+    //Adds new account to the selected user and recreate adapters.
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void addSavingAccount(View view) throws IOException {
         Bank.getInstance().getUserlist().get(activeuser).addAccountToUser(new SavingAccount(0));
@@ -206,6 +216,8 @@ public class AdminActivity extends AppCompatActivity {
         accounlist.setAdapter(accountadapter);
 
     }
+
+    //Adds new acard to the selected user and recreate adapters.
     public void addDebitCard(View view) {
         Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(activeacc).addCardtoAccount(
                 new DebitCard(Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(activeacc)));
@@ -214,6 +226,7 @@ public class AdminActivity extends AppCompatActivity {
         cardlist.setAdapter(cardadapter);
     }
 
+    //Adds new acard to the selected user and recreate adapters.
     public void addCreditCard(View view) throws IOException {
         credit = Integer.valueOf(creditedit.getText().toString());
         Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(activeacc).addCardtoAccount(
@@ -221,7 +234,7 @@ public class AdminActivity extends AppCompatActivity {
                         credit));
         DataBaseHandler dataBaseHandler = new DataBaseHandler(AdminActivity.this);
         dataBaseHandler.updateUserdata(Bank.getInstance().getUserlist().get(activeuser).getName(), Bank.getInstance().getUserlist().get(activeuser));
-        dataBaseHandler.filladminlist();
+        dataBaseHandler.fillAdminlist();
         cardadapter = new ArrayAdapter<Card>(this, android.R.layout.simple_dropdown_item_1line,Bank.getInstance().getUserlist().get(activeuser).getAccountlist().get(activeacc).getCardlist());
         cardlist.setAdapter(cardadapter);
 

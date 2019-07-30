@@ -1,7 +1,9 @@
 package com.example.bankapp_aj;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -47,6 +49,8 @@ public class TransferActivity extends AppCompatActivity {
         adapt2 = new ArrayAdapter<Account>(this, R.layout.support_simple_spinner_dropdown_item, Bank.getInstance().getActiveuser().getAccountlist());
         from.setAdapter(adapt2);
         to.setAdapter(adapt2);
+
+        //Listener for the account that sends the money
         from.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -63,6 +67,8 @@ public class TransferActivity extends AppCompatActivity {
 
             }
         });
+
+        //Listener for account that receives the money
         to.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,15 +81,16 @@ public class TransferActivity extends AppCompatActivity {
 
             }
         });
+
+        //Reset slider value
         seekbar.setMax(Math.round(Bank.getInstance().getActiveuser().getAccountlist().get(0).getMoneyamount()));
 
-
+        //Listener for slider value
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 transferamount = i;
                 transfertext.setText(String.valueOf(transferamount) +"€");
-
 
             }
 
@@ -98,10 +105,15 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
+        //Accept transaction button
         acceptbutton.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                //Finish the transfer
                 acceptTransfer(fromget,toget,transferamount);
+
+                //Update adapters and textviews
                 adapt2.notifyDataSetChanged();
                 tomoney.setText(String.valueOf(Bank.getInstance().getActiveuser().getAccountlist().get(toget).getMoneyamount())+"€");
                 frommoney.setText(String.valueOf(Bank.getInstance().getActiveuser().getAccountlist().get(fromget).getMoneyamount())+"€");
@@ -118,6 +130,8 @@ public class TransferActivity extends AppCompatActivity {
         tomoney = findViewById(R.id.tomoney);
     }
 
+    //Method for transfering money between user accounts
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void acceptTransfer(int fromget, int toget, int transferamount) {
         if(transferamount!=0) {
             Bank.getInstance().getActiveuser().transferMoney(fromget, toget, transferamount);
